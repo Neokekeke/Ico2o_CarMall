@@ -1,0 +1,141 @@
+<ion-view title="设置" hide-tabs="true">
+
+  <ion-content class="has-header" style="font-size: 14px; font-family: '微软雅黑';">
+    <ion-list>
+
+
+      <a class="a" ng-href="#/tab/personMessage" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+          <div class="row">
+            <div class="col col-25 text-center" style="padding-left: 11px;">
+              个人资料
+            </div>
+            <div class="col col-5">:</div>
+
+            <div class="col col-50 text-left">
+              <span ng-hide="loginState" >{{user.username}}</span>
+            </div>
+
+            <div class="col col-20 text-right" style="padding-right: 11px;">
+           <span ng-hide="loginState">
+             <i class="icon ion-chevron-right"></i>
+           </span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a class="a" ng-href="#/tab/bindQQ" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+
+          <div class="row">
+            <div class="col col-25 text-center" style="padding-left: 11px;">
+            <span ng-model="bindQQ">
+             QQ号
+            </span>
+            </div>
+ 						<div class="col col-5">:</div>
+            <div class="col col-50 text-left" >
+              <span style="float: right" ng-hide="loginState" ng-model="bindQQ">{{bindQQ}}</span>
+            </div>
+
+            <div class="col col-20 text-right" style="padding-right: 11px;">
+              <i class="icon ion-chevron-right"></i>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
+      <a class="a" ng-href="#/tab/bindWechat" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+          <div class="row">
+            <div class="col col-25 text-center" style="padding-left: 11px;">
+          <span ng-model="bindWechat">
+            微 信
+          </span>
+            </div>
+					 <div class="col col-5">:</div>
+            <div class="col col-50 text-left">
+              <span style="float: right" ng-hide="loginState">{{bindWechat}}</span>
+            </div>
+
+            <div class="col col-20 text-right" style="padding-right: 11px;">
+
+              <i class="icon ion-chevron-right"></i>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
+      <a class="a" ng-href="#/tab/bindPhone" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+          <div class="row">
+            <div class="col col-25 text-center" style="padding-left: 11px;">
+          <span ng-model="bindPhone">
+            手 机
+          </span>
+            </div>
+						 <div class="col col-5">:</div>
+            <div class="col col-50 text-left">
+            <span style="float: right" ng-hide="loginState" ng-model="bindPhone">
+              {{bindPhone}}
+            </span>
+            </div>
+
+            <div class="col col-20 text-right" style="padding-right: 11px;">
+              <i class="icon ion-chevron-right"></i>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
+      <a class="a" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+          <div class="row">
+            <div class="col col-25 text-center" style="padding-left: 11px;">
+              修改密码
+            </div>
+ 						<div class="col col-5">:</div>
+            <div class="col col-50 text-left">
+              <span ng-hide="loginState" style="float: right" >{{changePwd}}</span>
+            </div>
+
+            <div class="col col-20 text-right" style="padding-right: 11px;">
+              <i class="icon ion-chevron-right"></i>
+            </div>
+
+          </div>
+        </div>
+      </a>
+
+      <a class="a" ng-href="#/tab/aboutUs" ng-hide="loginState">
+        <div class="item" style="padding:0px">
+        <div class="row" style="padding:0px">
+          <div class="col">
+            <span style="color: red">关于我们</span>
+          </div>
+        </div>
+        </div>
+      </a>
+			<center>
+			
+	    <button class="button  button-assertive button-block" ng-click="logout()" ng-hide="loginState" style="border-radius: 5px; height: 32px; width: 95%; line-height: 32px; margin: 0 10px 0 10px;">
+	      <span>退出登录</span>
+	    </button>
+		</center>
+
+    </ion-list>
+
+    <div class="list has-header">
+      <span ng-show="loginState" style="font-size:xx-large;color: red">
+        <center>请先登录后操作</center>
+      </span>
+    </div>
+		
+  </ion-content>
+
+
+</ion-view>

@@ -1,0 +1,12 @@
+<div ng-controller="wuliuCtrl">
+	<!--
+    	作者：黄铭标
+    	时间：2016-10-26
+    	描述：修改选择方式
+   -->
+	<div class="list">
+		<ion-radio class="row" ng-model="choiceWuLiu.index" ng-value="{{$index}}" ng-repeat="wuliu in WuLiu" ng-checked="false">
+			{{wuliu.name}} {{wuliu.price}}
+		</ion-radio>
+	</div>
+</div>

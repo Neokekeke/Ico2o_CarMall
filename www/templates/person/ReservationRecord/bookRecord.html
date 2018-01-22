@@ -1,0 +1,43 @@
+<ion-view title="预约记录" hide-tabs="true">
+  <ion-content>
+    <div ng-repeat="item in bookRecord.data" style="font-family: 微软雅黑">
+      <div class="item item-input-wrapper" style="background-color: white;height: 10px">
+        <div class="col" style="font-size: 14px;text-align: left">预约单号：{{item.OrderNO}}</div>
+        <div class="col" style="text-align: right;font-size: 14px">时间：{{item.BookingDate}}</div>
+      </div>
+      <div style="border: solid 1px;border-color: #e1e1e1"></div>
+      <div class="row item item-text-wrap" style="border-bottom: none">
+        <div class="col col-40" style="padding-bottom: 0px;padding-top: 0px;border-right: 1px solid #ddd">
+          <div class="row" style="padding-left: 2px;padding-top: 2px;color: red;font-size: 14px">{{item.Maintenance_match.Garage}}</div>
+          <div class="row" style="padding-left: 2px;font-size: 12px">{{item.Maintenance_match.Address}}</div>
+          <div class="row" style="padding-bottom: 0px;padding-left: 2px;font-size: 12px">电话：{{item.Maintenance_match.Tel}}</div>
+        </div>
+        <div class="col col-25" style="padding-bottom: 0px;padding-top: 0px;font-size: 14px;border-right: 1px solid #ddd">
+          <div class="row" style="padding-top: 2px;">
+            保养项目：
+          </div>
+          <div class="row" style="padding-bottom: 0px;font-size: 12px" ng-repeat="x in item.MaintenanceItemName track by $index">{{x}}
+          </div>
+        </div>
+        <div class="col col-34" style="padding-bottom: 0px;">
+          <div class="row" style="font-size: 14px;">预约状态：
+            <span style="font-size: 14px;background-color: #0a9dc7;color: white;padding: 0px">{{item.Status}}</span>
+          </div>
+          <div class="row" style="padding-bottom: 0px;font-size: 14px;">参考费用：
+            <div style="font-size: 14px;color: red"><b>253.00</b></div>
+          </div>
+        </div>
+      </div>
+      <div style="border: solid 1px;border-color: transparent"></div>
+      <div style="border: solid 1px;border-color: rgba(0, 0, 0, 0.34)"></div>
+      <div style="border-top: solid 7px;border-color: #cccccc;"></div>
+
+    </div>
+
+    <ion-infinite-scroll
+      ng-if="hasmore"
+      on-infinite="loadMore1()"
+      distance="5%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

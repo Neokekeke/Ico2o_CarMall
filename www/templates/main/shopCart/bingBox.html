@@ -1,0 +1,17 @@
+<ion-modal-view ng-controller="bingBoxCtrl">
+	<ion-header-bar class="bar bar-header bar-positive">
+		<h1 class="title">选择钉箱</h1>
+	</ion-header-bar>
+	<ion-content>
+		<form ng-submit="submit_bingbox()">
+		<ion-list>
+			<!-- ng-checked="boxState[$index]" ng-click="setBingBox($index)"-->
+<!--			<ion-checkbox ng-repeat="box in IDList">
+				{{box.Name}}
+				<ion-checkbox>-->
+					<ion-checkbox ng-repeat="box in IDList" ng-checked="boxState[$index]" ng-click="setBingBox($index)">{{box.Name}}</ion-checkbox>
+		</ion-list>
+		<button class="button button-assertive button-full" style="border-radius: 5px;" type="submit">确定</button>
+		</form>
+	</ion-content>
+</ion-modal-view>

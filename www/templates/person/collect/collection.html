@@ -1,0 +1,47 @@
+<ion-view title="我的收藏" hide-tabs="true">
+
+	<ion-content>
+		<div class="list">
+			<div ng-repeat="favs in myfavs">
+				<div class="item item-text-wrap" style="padding: 5px 5px 5px 10px;">
+					<div class="row" style="font-size: 14px; font-family: '微软雅黑';">
+						<div class="col-30">
+							<img src="{{host_ico2o}}{{favs.Product.ImagePath}}" style="width: 95px;height: 95px">
+						</div>
+						<div class="col-50 text-left">
+							<div class="row" style="margin-top:2px;margin-bottom: 2px;">
+								<span>{{favs.Product.ProName}}</span>
+							</div>
+							<div class="row" style="margin-top:2px;margin-bottom: 2px;">
+								<span>属性：蓝色</span>
+							</div>
+							<div class="row" style="margin-top:2px;margin-bottom: 2px;">
+								<span><s>{{" "+" "+favs.Product.MarketPrice+"  元"}}</s>&nbsp;<a style="font-size: 16px;color: black;">{{favs.Product.ShopPrice+"   元"}}</a></span>
+							</div>
+
+						</div>
+						<div class="col-20">
+							<div class="row" style="">
+								<button class="button text-right" ng-click="delMyfav(favs.ID,$index)" style="background-color: #2076c0;color:white;width: 93px; height: 35px;line-height: 35px;font-size: 14px; font-family: '微软雅黑';">
+	                   				删 除
+	                  			</button>
+							</div>
+							<div class="row" style="margin-top:5px; ">
+								<button class="button text-right" ng-click="addShopcar(favs.Product.ID)" style="background-color: #2076c0;color:white; font-size: 12px;padding：3px; width:93px;height: 35px; line-height: 35px;font-size: 14px;font-family: '微软雅黑';">
+		               			   加入购物车
+		                		</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    <ion-infinite-scroll
+      ng-if="hasmore"
+      on-infinite="loadMore1()"
+      distance="5%">
+    </ion-infinite-scroll>
+
+	</ion-content>
+</ion-view>

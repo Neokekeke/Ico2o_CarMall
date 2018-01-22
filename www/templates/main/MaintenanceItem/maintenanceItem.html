@@ -1,0 +1,210 @@
+<ion-view title="常规保养"  hide-tabs="true">
+  <ion-content >
+    <div style="background-color: #f8f8f8;font-size: 16px;text-align: left;font-family: '微软雅黑';color: #505050;padding-top: 10px;padding-left: 10px;">请选择您需要的保养服务套餐</div>
+    <div class="row" style="background-color: #f8f8f8;">
+    <div class=" col col-33" >
+        <button class="button button-img-div2" ng-click="setBtnChecked(1,5000)">
+          <img src="img/p5.png" style="width: 75%;height: 75%;">
+          <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">5千公里</div>
+        </button>
+      </div>
+      
+      <div class="col col-33">
+        <button class="button button-img-div2"  ng-click="setBtnChecked(2,10000)">
+          <img src="img/p4.png" style="width: 75%;height: 75%;">
+           <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">1万公里</div>
+        </button>
+      </div>
+      <div class="col col-33">
+        <button class="button button-img-div2"  ng-click="setBtnChecked(3,30000)">
+          <img src="img/p6.png" style="width: 75%;height: 75%;">
+          <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">3万公里</div>
+        </button>
+      </div>
+    </div>
+    <div class="row" style="background-color: #f8f8f8;margin-top: -15px;">
+      <div class="col col-33">
+        <button class="button button-img-div2"  ng-click="setBtnChecked(4,40000)">
+          <img src="img/p7.png" style="width: 75%;height: 75%;">
+         <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">4万公里</div>
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-img-div2"  ng-click="setBtnChecked(5,60000)">
+          <img src="img/p8.png" style="width: 75%;height: 75%;">
+          <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">6万公里</div>
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-img-div2"  ng-click="setBtnChecked(6,100000)">
+          <img src="img/p9.png" style="width: 75%;height: 75%;">
+          <div style="color: #505050;font-size: 14px;font-family: '微软雅黑';padding-top: 5px;">10万公里</div>
+        </button>
+      </div>
+    </div>
+
+    <!--保养项目  style.visibility="visible";//显示   hidden";//隐藏-->
+    <div class="title" style="margin-top: -10px;padding-left: 10px;padding-right: 10px;height: 30px; background-color: #fe4600;line-height: 30px;">
+      <a style="color: white;font-size: 14px;font-family: '微软雅黑';">保养项目</a>
+    </div>
+    <div class="row" style="background-color: #f8f8f8;padding-left: 10px;padding-right: 10px;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(0)">
+          <img src="img/main/maintenance_gray_01.png"  ng-if="!btResultList[0]" >
+          <img src="img/main/maintenance_orange_01.png" ng-if="btResultList[0]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(1)">
+          <img src="img/main/maintenance_gray_12.png"  ng-if="!btResultList[1]" >
+          <img src="img/main/maintenance_orange_12.png" ng-if="btResultList[1]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button  class="button" ng-click="setBT(2)">
+          <img src="img/main/maintenance_gray_13.png"  ng-if="!btResultList[2]" >
+          <img src="img/main/maintenance_orange_13.png" ng-if="btResultList[2]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(3)">
+          <img src="img/main/maintenance_gray_03.png"  ng-if="!btResultList[3]" >
+          <img src="img/main/maintenance_orange_03.png" ng-if="btResultList[3]">
+        </button>
+      </div>
+    </div>
+    <div class="row" style="background-color: #f8f8f8;padding-left: 10px;padding-right: 10px;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(4)">
+          <img src="img/main/maintenance_gray_03.png"  ng-if="!btResultList[4]">
+          <img src="img/main/maintenance_orange_03.png" ng-if="btResultList[4]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(5)">
+          <img src="img/main/maintenance_gray_06.png"  ng-if="!btResultList[5]" >
+          <img src="img/main/maintenance_orange_06.png" ng-if="btResultList[5]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(6)">
+          <img src="img/main/maintenance_gray_06.png"  ng-if="!btResultList[6]" >
+          <img src="img/main/maintenance_orange_06.png" ng-if="btResultList[6]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(7)">
+          <img src="img/main/maintenance_gray_05.png"  ng-if="!btResultList[7]" >
+          <img src="img/main/maintenance_orange_05.png" ng-if="btResultList[7]">
+        </button>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 10px;padding-right: 10px;background-color: #f8f8f8;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(8)">
+          <img src="img/main/maintenance_gray_17.png"  ng-if="!btResultList[8]" >
+          <img src="img/main/maintenance_orange_17.png" ng-if="btResultList[8]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(9)">
+          <img src="img/main/maintenance_gray_21.png"  ng-if="!btResultList[9]" >
+          <img src="img/main/maintenance_orange_21.png" ng-if="btResultList[9]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button id="01" class="button" ng-click="setBT(10)">
+          <img src="img/main/maintenance_gray_18.png"  ng-if="!btResultList[10]" >
+          <img src="img/main/maintenance_orange_18.png" ng-if="btResultList[10]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(11)">
+          <img src="img/main/maintenance_gray_16.png"  ng-if="!btResultList[11]" >
+          <img src="img/main/maintenance_orange_16.png" ng-if="btResultList[11]">
+        </button>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 10px;padding-right: 10px;background-color: #f8f8f8;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(12)">
+          <img src="img/main/maintenance_gray_15.png"  ng-if="!btResultList[12]" >
+          <img src="img/main/maintenance_orange_15.png" ng-if="btResultList[12]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(13)">
+          <img src="img/main/maintenance_gray_07.png"  ng-if="!btResultList[13]" >
+          <img src="img/main/maintenance_orange_07.png" ng-if="btResultList[13]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(14)">
+          <img src="img/main/maintenance_gray_08.png"  ng-if="!btResultList[14]" >
+          <img src="img/main/maintenance_orange_08.png" ng-if="btResultList[14]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(15)">
+          <img src="img/main/maintenance_gray_09.png"  ng-if="!btResultList[15]" >
+          <img src="img/main/maintenance_orange_09.png" ng-if="btResultList[15]">
+        </button>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 10px;padding-right: 10px;background-color: #f8f8f8;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(16)">
+          <img src="img/main/maintenance_gray_19.png"  ng-if="!btResultList[16]" >
+          <img src="img/main/maintenance_orange_19.png" ng-if="btResultList[16]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(17)">
+          <img src="img/main/maintenance_gray_22.png"  ng-if="!btResultList[17]" >
+          <img src="img/main/maintenance_orange_22.png" ng-if="btResultList[17]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(18)">
+          <img src="img/main/maintenance_gray_20.png"  ng-if="!btResultList[18]" >
+          <img src="img/main/maintenance_orange_20.png" ng-if="btResultList[18]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(19)">
+          <img src="img/main/maintenance_gray_14.png"  ng-if="!btResultList[19]" >
+          <img src="img/main/maintenance_orange_14.png" ng-if="btResultList[19]">
+        </button>
+      </div>
+    </div>
+    <div class="row" style="padding-left: 10px;padding-right: 10px;background-color: #f8f8f8;">
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(20)">
+          <img src="img/main/maintenance_gray_11.png"  ng-if="!btResultList[20]" >
+          <img src="img/main/maintenance_orange_11.png" ng-if="btResultList[20]">
+        </button>
+      </div>
+      <div class="col col-25">
+        <button class="button" ng-click="setBT(21)">
+          <img src="img/main/maintenance_gray_10.png"  ng-if="!btResultList[21]" >
+          <img src="img/main/maintenance_orange_10.png" ng-if="btResultList[21]">
+        </button>
+      </div>
+      <div class="col-25 col">
+        <button class="button" ng-click="setBT(22)">
+         </button>
+        </button>
+      </div>
+      <div class="col-25 col">
+        <button class="button" ng-click="setBT(23)">
+        </button>
+        </button>
+      </div>
+    </div>
+    <div  style="padding-left: 10px;padding-right: 10px;margin-top: -25px;">
+       <button class="button button-full" style="height: 35px;border-radius: 5px;background-color:orangered;line-height: 35px;" ng-click="open_MaintianceItemNext()">
+        <a style="color: white;font-size: 16px;font-family: '微软雅黑';">下一步</a>
+      </button>
+      </div>
+  </ion-content>
+</ion-view>

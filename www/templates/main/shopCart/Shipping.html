@@ -1,0 +1,8 @@
+<div ng-controller="orderCheckCtrl">
+	<div class="item row" ng-repeat="pay in payList" ng-click="confirm_payStyle(pay)">
+		<div class="col">{{pay.title}}</div>
+		<div class="col col-offset-40">
+			<img style="height: 30px;width:30px" src="{{pay.imgPath}}">
+		</div>
+	</div>
+</div>

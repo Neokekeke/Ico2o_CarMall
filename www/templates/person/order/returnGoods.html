@@ -1,0 +1,75 @@
+ <ion-view title="退货列表" hide-tabs="true">
+  <ion-content>
+
+    <div ng-repeat="reGood in reGoods.ListOrdersItem">
+      <div class="item item-text-wrap">
+        <div class="row">
+          <div class="col col-50">
+            <a ng-href="#/tab/orderMessage/{{reGood.ProductID}}">
+              <img src="{{host_ico2o}}{{reGood.ImagePath}}"
+                   style="width: 100px;height:100px" >
+            </a>
+          </div>
+
+          <div class="col col-33">
+            <div class="row">
+              <span>{{reGood.Name}}</span><br>
+            </div>
+            <div class="row">
+              <span>属性：白色</span>
+            </div>
+            <div class="row">
+              <span>{{"￥: "+reGood.Price+""+" 元"}}</span><br>
+            </div>
+            <div class="row">
+              <span>{{"数量："+reGood.Quantity}}个</span>
+            </div>
+          </div>
+
+          <div class="col col-10">
+            <ion-checkbox style="border-style: none"
+                          ng-click="isSelected($index)"
+                          ng-checked="Selected[$index]">
+            </ion-checkbox>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="list">
+      <br>
+      <div class="row">
+        <span class="h">{{"商品总价: "+TotalSum1+" 元"}}</span>
+      </div><br>
+
+      <div class="row">
+        <span style="color: red">退款金额：￥ {{returnSum}}</span>
+      </div><br>
+
+      <div class="row">
+         <ion-checkbox style="border-style: none"> 退运费</ion-checkbox>
+      </div><br>
+
+      <div class="row">
+        退货原因：
+        <select ng-model="returnReason" style="width: 80%" >
+          <option ng-repeat="x in reason">{{x.reason}}</option>
+        </select>
+      </div><br>
+
+      <div class="row">
+        退货备注：
+         <input type="text" style="border:1px solid red;width: 80%;height: 50px" ng-model="reason2"/>
+      </div>
+
+
+
+      <div class="row">
+        <button class="button button-full button-assertive" ng-click="returngoods()" ng-model="submitItems">
+          申请退货
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

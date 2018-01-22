@@ -1,0 +1,30 @@
+<ion-view title="选择对应订单" hide-tabs="true">
+  <ion-nav-buttons side="right">
+    <button ng-click="selectOrder()" class="button button-small button-clear" style="width: 50px;height: 50px;">
+      <span style="color: white;">完成</span></button>
+  	</ion-nav-buttons>
+  <ion-content>
+    <div class="input input-inset" ng-repeat="item in repair_order">
+      <ion-checkbox ng-model="item.Checked" class="item item-input-wrapper">
+        订单号：{{item.OrderNO }}
+      </ion-checkbox>
+      <div class="input input-inset" ng-repeat="x in item.ListOrdersItem">
+        <div class="item">
+          <div class="row">
+            <div class="col-25"><img style="height: 70px;width: 70px" src="{{host_ico2o}}{{x.ImagePath}}"></div>
+            <div class="col" style="font-size: smaller">
+              <div class="row">
+                <div class="col item-text-wrap">{{x.Name}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">数量：{{x.Amount}}</div>
+                <div class="col col-offset-10">单价：{{x.Price}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

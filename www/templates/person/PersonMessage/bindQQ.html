@@ -1,0 +1,29 @@
+<ion-view title="绑定QQ" hide-tabs="true">
+
+
+    <ion-content class="has-header" style="font-size: 14px; font-family: '微软雅黑';">
+
+      <div class="item item-input">
+        <input type="text" ng-model="bindQQ1" placeholder="请输入QQ号" maxlength="10">
+      </div>
+
+      <div class="row">
+
+      <div class="col">
+         <a class="button button-block button-assertive"
+              ng-click="BindQQComplete(bindQQ1)" ng-href="#/tab/setting" style="height: 35px;line-height: 35px;">
+          完成
+        </a>
+      </div>
+
+        <div class="col">
+           <a class="button button-block button-assertive"
+                  ng-click="" style="height: 35px;line-height: 35px;">
+            解除绑定
+           </a>
+        </div>
+
+      </div>
+    </ion-content>
+  </ion-view>
+

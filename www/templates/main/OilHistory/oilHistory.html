@@ -1,0 +1,117 @@
+<ion-view title="加油历史" hide-tabs="true">
+  <ion-content>
+    <div class="list" style="padding-left: 10px;padding-right: 10px">
+      <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px;padding-bottom: 10px">
+        <div class="col-30">
+          <span style="font-size: 14px">选择车型：</span>
+          </div>
+        <div class="col-33">
+            <select ng-model="OilRecord.CarID" ng-click="refreshOilRecord()">
+              <option value="" hidden>{{DefaultCar.Ex_carType}}</option>
+              <option ng-repeat="x in car" ng-value="x.ID">{{x.Ex_carType}}</option>
+            </select>
+        </div>
+      </label>
+      <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px">
+	      <div class="col-30" style="">
+	      	<span class="input-label" style="font-size: 14px">请选择：</span>
+	      </div>
+        <div class="col" style="padding: 0px">
+          <input ng-click="refreshOilRecord()" style="padding: 0px;padding-top: 8px;border-radius: 5px" type="date" ng-model="OilRecord.StartTime">
+        </div>
+      </label>
+      <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px">
+	       <div class="col-30" style="text-align: left;padding-left: 28px">
+           <span class="input-label" style="font-size: 14px">至：</span>
+         </div>
+	      <div class="col" style="padding: 0px">
+		        		<input  ng-click="refreshOilRecord()" style="padding: 0px;padding-top: 8px;border-radius: 5px" type="date" ng-model="OilRecord.EndTime">
+	      </div>
+      </label>
+        <button class="button button-small button-assertive" ng-click="selectOil()" style="float:right;margin-top:10px;width: 50px">查看</button>
+    </div>
+    <div class="title row" style="padding-left:16px;font-size: 12px;">
+      <div class="row" style="padding-left: 5px">
+      <div class="col" style="text-align: left">
+        日期
+      </div>
+      <div class="col" style="text-align: left">
+        公里
+      </div>
+      <div class="col" style="text-align: left">
+        油量
+      </div>
+      <div class="col" style="text-align: left">
+        单价
+      </div>
+    <!--  <div class="col">
+        百公里油耗
+      </div>-->
+      <div class="col" style="text-align: left">
+        燃油类型
+      </div>
+      </div>
+    </div>
+    <!--<div class="row">
+      <button class="button button-light button-small" style="color:blue" ng-click="previewPage()">上页</button>
+      <button class="button button-light button-small" style="color:blue" ng-click="nextPage()">下页</button>
+    </div>-->
+    <ion-list>
+      <ion-item ng-repeat="item in OilRecord_got" style="padding-right: 5px">
+        <div class="row" style="font-size: 12px">
+          <!--<div class="col">
+            <button class="button button-small button-assertive" style="font-size: xx-small"
+                    ng-click="deleteOilRecord(item.ID,$index)">删除
+            </button>
+          </div>-->
+          <div class="col" style="text-align: left">
+            {{item.AddTime}}
+          </div>
+          <div class="col" style="text-align: left">
+            {{item.Driver_KM}}KM
+          </div>
+          <div class="col" style="text-align: left">
+            {{item.Amount}}升
+          </div>
+          <div class="col" style="text-align: left">
+            {{item.Price}}元
+          </div>
+        <!--  <div class="col">
+            {{item.OilWear}}
+          </div>-->
+          <div class="col" style="text-align: left">
+            {{item.PetrolType}}#
+          </div>
+        </div>
+      </ion-item>
+     <!-- <ion-item>
+        <div class="row">
+          <div class="col">
+            总价
+          </div>
+          <div class="col">
+            {{zonggonglishu }}
+          </div>
+          <div class="col">
+            {{zongyouliang}}
+          </div>
+          <div class="col">
+            {{zongdanjia}}
+          </div>
+          <div class="col">
+            {{baigongliyouhao}}
+          </div>
+          <div class="col">
+            {{jine}}
+          </div>
+        </div>
+      </ion-item>-->
+      <!--<button class="button button-balanced" ng-click="loadMore()">测试</button>-->
+    </ion-list>
+    <ion-infinite-scroll
+      ng-if="hasmore"
+      on-infinite="loadMore1()"
+      distance="5%" immediate-check="false">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

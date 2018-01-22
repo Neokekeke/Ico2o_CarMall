@@ -1,0 +1,17 @@
+<div ng-controller="updateAddressCtrl" style="text-align: center;">
+	<select id="province" ng-model="address.province" ng-options="pros.Name for pros in provinces" style="width:130px">
+		<option value="">---请选择省份---</option>
+	</select><br /><br />
+	<select ng-model="address.city" ng-options="cit.Name for cit in cities" style="width:130px">
+		<option value="">---请选择城市---</option>
+	</select><br /><br />
+	<select ng-model="address.area" ng-options="are.Name for are in areas" style="width:130px">
+		<option value="">---请选择区域---</option>
+	</select>
+	<br />
+	<br />
+	<div class="button-bar">
+	<button type="button" class="button button-outline button-positive button-full" ng-click="cancel()">取消</button>
+	<button type="button" class="button button-bar-inline button-positive button-full" ng-click="confirm()" >确定</button>
+	</div>
+</div>

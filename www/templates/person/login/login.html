@@ -1,0 +1,101 @@
+<ion-view title="会员登录" hide-tabs="true">
+
+	<ion-content class="padding ">
+		<!--	&lt;!&ndash;/*修改头像*/&ndash;&gt;
+		<center><img src="img/p2.png"></center>
+		<center><button class="button" ng-click="PictureUpload()">
+      <c>修改头像</c>
+    </button></center>-->
+
+		<!--/*登陆*/-->
+		<label class="item item-input" style="font-size: 14px; font-family: '微软雅黑';">
+      			账号：<input type="text" ng-model="user.username">
+    	</label>
+		<label class="item item-input" style="font-size: 14px; font-family: '微软雅黑';">
+      			密码：<input type="password" ng-model="user.password">
+    	</label>
+    	<center>
+		<button style="width: 95%; height: 32px;" class="button button-block button-assertive button-small" ng-click="login()" ng-show="loginState">
+     			 <span style="font-size: 14px; font-family: '微软雅黑';">登录</span>
+        </button>
+		<button style="width: 95%;height: 32px;" class="button button-block button-assertive button-small" ng-click="logout()" ng-hide="loginState">
+                 <span style="font-size: 14px; font-family: '微软雅黑';">退出登录</span>
+        </button>
+        </center>
+		<!--新用户注册-->54
+		<!--
+            	作者：黄铭标
+            	时间：2016-10-13
+            	描述：修改状态
+            -->
+            <center>
+		<div class="row " ng-if="flag_address == 0" style="padding:0 5px">
+			<div class="col col-50" style="padding:0 5px">
+				<a class="button button-small" style="background-color: #2076c0; color: white; height: 32px;width:97%; line-height: 30px;" ng-href="#/tab/register">新用户注册</a>
+			</div>
+			<div class="col col-50" style="padding:0 5px">
+				<a class="button button-small" style="background-color: #2076c0; color: white; height: 32px;width:97%; line-height: 30px;" ng-href="#/tab/forgotPassword">找回密码</a>
+			</div>
+		</div>
+		<div class="row" ng-if="flag_address == 1" style="padding:0 5px">
+			<div class="col col-50" style="padding:0 5px">
+				<a class="button button-small" style="background-color: #2076c0; color: white; height: 32px;width: 97%; line-height: 30px;" ng-href="#/tab/register2">新用户注册</a>
+			</div>
+			<div class="col col-50" style="padding:0 5px">
+				<a class="button button-small" style="background-color: #2076c0; color: white; height: 32px;width: 97%; line-height: 30px;" ng-href="#/tab/forgotPassword2">找回密码</a>
+			</div>
+		</div>
+		</center>
+		<!--其他登陆方式-->
+		<!--原先按钮版网页QQ的登录-->
+		<!-- <span id="qqLoginBtn">
+          <img src="img/qq.png">
+       </span>-->
+		<!--QQ-->
+
+		<!--图片代替按钮-->
+		<!--<center style="font-size: 15px;">快捷登录</center>-->
+
+		<!--	&lt;!&ndash;QQ&ndash;&gt;
+
+        <a href="javascript:QC.Login.showPopup({
+                                appId:'101335458',
+                                redirectURI:'http://www.ico2o.cn'
+                                });">
+          <img src="img/qq.png" style="height: 35px; width: 35px;">
+        </a>-->
+
+
+		<!--	<span style="padding-left: 20px;">
+        {{" "+" "}}
+      </span>-->
+
+			<!--微信-->
+      <div class="row" style="margin-top: 5px">
+        <span style="line-height: 25px;display: inline;margin-left: 12px">快捷登录：</span>
+            <a class="button-small button-assertive button" style="display: inline-block;cursor: pointer"
+               ng-click="goOpenid()"><!--注册了就隐藏-->
+              <!--href="http://www.ico2o.cn/ASHX/MobileAPI/Pay/GetOpenid.ashx?WxIndexUrl=http://m.ico2o.cn/!/tab/newoldlogin"-->
+              <!--href="https://open.weixin.qq.com/connect/qrconnect?appid=wx9a9d92fafb13171e&redirect_uri=http://www.ico2o.cn&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect"-->
+              <!--<img src="img/weixin.png"  style="height: 25px; width: 25px;">-->
+              微信注册
+            </a>
+          <a class="button button-assertive button-small" ng-click="weLogin()" style="margin-left: 10px">微信直接登录</a>
+        </div>
+
+      </div>
+
+
+
+    <span ng-show="fail" style="font-size: 16px;color: red">
+      <center>
+        {{loginFail}}
+      </center>
+    </span>
+
+		<!--    <img src="img/wx.jpg" style="width: 100px;height: 100px">-->
+
+		<!--<button ng-click="QQlogin()">百度</button>-->
+
+	</ion-content>
+</ion-view>

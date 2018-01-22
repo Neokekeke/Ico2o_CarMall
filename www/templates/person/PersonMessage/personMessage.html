@@ -1,0 +1,94 @@
+<ion-view title="个人资料" hide-tabs="true">
+  <ion-content class="has-header">
+    <center style="margin-top: 20px;">
+         <span>
+            <img ng-src="{{item.imgSrc}}" style="height: 100px;width: 100px;">
+         </span>
+    </center>
+
+      <div class="list has-header">
+        <form ng-submit="submit_form()" class="col-center">
+            <div ng-repeat="item in thumb">
+              <!-- 采用angular循环的方式，对存入thumb的图片进行展示 -->
+              <label>
+                <img ng-src="{{item.imgSrc}}" style="height: 100px;width: 100px;"/>
+              </label>
+            </div>
+              <label>
+                <input type="file" id="one-input"
+                			style="line-height: 23px;"
+                       accept="image/*"
+                       file-model="images"
+                       onchange="angular.element(this).scope().img_upload(this.files)"/>
+              </label>
+          <input type="submit" name="" value="提 交" />
+        </form>
+      </div>
+
+
+
+      <div class="item has-header" style="padding:0">
+        <div class="row">
+
+          <div class="col col-30">
+           <span>
+              用户：
+            </span>
+          </div>
+
+          <div class="col col-50 text-center">
+            <span>{{user.username}}</span>
+          </div>
+
+          <div class="col col-20">
+             <i class="icon ion-chevron-right"></i>
+          </div>
+
+        </div>
+      </div>
+
+      <a class="a" ng-href="#/tab/editName">
+      <div class="item has-header" style="padding:0">
+        <div class="row">
+
+         <div class="col col-30">
+          <span ng-model="nickName">
+            昵称：
+          </span>
+         </div>
+
+          <div class="col col-50 text-center" >
+            <span style="float: right">{{nickName}}</span>
+          </div>
+
+          <div class="col col-20">
+              <i class="icon ion-chevron-right"></i>
+          </div>
+
+        </div>
+      </div>
+    </a>
+
+
+      <div class="item has-header" style="padding:0">
+        <div class="row">
+           <div class="col col-30">
+            <span ng-model="sex">
+              性别：
+            </span>
+           </div>
+
+          <div class="col col-50 text-center">
+              <span>{{sex}}</span>
+          </div>
+
+          <div class="col col-20">
+            <button class="button button-small" ng-click="selectSex()" style="background-color: #2076c0; color: white;">
+              		请选择
+            </button>
+          </div>
+        </div>
+      </div>
+
+  </ion-content>
+</ion-view>

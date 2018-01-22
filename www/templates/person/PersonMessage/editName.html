@@ -1,0 +1,20 @@
+<ion-view title="修改昵称" hide-tabs="true">
+  <ion-content class="has-header">
+    <form id="form">
+    <div class="item item-input item-button-right">
+      昵称：
+      <input type="text" ng-model="nickName1">
+      <button class="button" ng-click="empty()" style="background-color: #2076c0; color: white; text-align: center; width: 45px;">
+        <i class="icon ion-ios-close-empty"></i>
+      </button>
+    </div>
+    </form>
+
+    <a class="a button button-assertive button-full"
+       ng-click="Namecomplete(nickName1)" ng-href="#/tab/personMessage">
+      完成
+    </a>
+
+  </ion-content>
+
+</ion-view>

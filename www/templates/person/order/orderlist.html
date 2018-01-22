@@ -1,0 +1,74 @@
+<ion-view title="订单详情" hide-tabs="true">
+  <ion-content>
+    <div class="list">
+
+        <div class="item item-text-wrap">
+          <div class="row" ng-model="status">
+            <span class="o"><b>订单状态：{{status}}</b></span>
+          </div><br>
+          <div class="row">
+            <span>{{orderlists.Name}}</span>
+          </div>
+          <div class="row">
+            <span>{{"收货地址："+orderlists.Address}}</span>
+          </div>
+        </div>
+
+       <!-- 每个框架的边线-->
+
+          <div ng-repeat="orderlistss in orderlists.ListOrdersItem ">
+            <div class="item item-text-wrap">
+              <a class="a" ng-href="#/tab/orderMessage/{{orderlistss.ProductID}}" style="color: black">
+            <div class="row">
+            <div class="col">
+              	<img src="{{host_ico2o}}{{orderlistss.ImagePath}}"
+                   style="width: 100px;height:100px" >
+            </div>
+
+            <div class="col">
+              <div class="row">
+                <span>{{orderlistss.Name}}</span><br>
+              </div>
+              <div class="row">
+                <span>属性：白色</span>
+              </div>
+              <div class="row">
+                <span>{{"￥: "+orderlistss.Price+""+" 元"}}</span><br>
+              </div>
+              <div class="row">
+                <span>{{"数量："+orderlistss.Quantity}}个</span>
+              </div>
+            </div>
+          </div>
+          </div>
+            </a>
+          </div>
+
+          <!--每个框架的边线-->
+          <div class="item item-text-wrap">
+          <div class="col">
+            <div class="row">
+              <span class="h">{{"钉箱: "+orderlists.OtherPrice+" 元"}}</span><br>
+            </div>
+            <div class="row">
+              <span class="h">{{"运费："+orderlists.OtherPrice+" 元"}}</span>
+            </div>
+            <div class="row">
+              <span class="h">{{"实付款: "+TotalSum1+" 元"}}</span>
+            </div>
+
+            <div class="row">
+              <span>{{"订单编号："+orderlists.OrderNO}}</span><br>
+            </div>
+            <div class="row">
+              <span>{{"创建订单："+orderlists.CreatedDate}}</span><br>
+            </div>
+            <div class="row">
+              <span>{{"完成订单：null"}}</span><br>
+            </div>
+          </div>
+      </div>
+
+      </div>
+  </ion-content>
+</ion-view>

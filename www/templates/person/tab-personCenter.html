@@ -1,0 +1,175 @@
+<ion-view title="个人中心" hide-back-button="true">
+
+		 <ion-nav-buttons side="right">
+		    <a ng-href="#/tab/setting" style="font-size: 25px; color: white;line-height: 34px;margin-right: 5px;text-decoration:none;">
+		      <i class="ion-gear-a" ></i>
+		    </a>
+  	</ion-nav-buttons>
+
+  <ion-content class="has-header" style="background-color: #f8f8f8;">
+  	   	<!--登录之前跳转登录界面-->
+		          <div class="row" ng-if="loginState" style="background-color: #2076c0;">
+			            <a class="row " href="#" ng-href="#/tab/login" style="border:none;text-decoration:none; color: white;">
+			            		 	<div class="col col-30">
+									      		<img src="img/p2.png" style="width: 60px; height: 60px;">
+									      </div>
+									      <div class="col col-40 text-left col-center">
+										      		<span class="c" ng-if="loginState" style="color: white;">点击登录</span><br>
+										     			 <span>登录后可以查看更多.</span>
+										    </div>
+										    <div class="col col-30 text-right col-center">
+		          									<i class="icon ion-chevron-right"></i>
+		        						</div>
+				  				</a>
+			      	</div>
+			      	<!--登录后跳转个人资料-->
+		          <div class="row" ng-if="!loginState" style="background-color: #2076c0;">
+			             <a class="row" ng-href="#/tab/personMessage" style="border:none;text-decoration:none;color: white;">
+			            		 		<div class="col col-30">
+											     			 <img src="img/p2.png" style="width: 40px; height: 40px;">
+											    </div>
+											    <div class="col col-40 text-left col-center">
+														      <span class="c" ng-if="!loginState" style="color: white;font-size: 18px;">{{UserName}}&nbsp;</span>,&nbsp;您好
+
+											     </div>
+											      <div class="col col-30 text-right col-center">
+		          										<i class="icon ion-chevron-right"></i>
+		        								</div>
+					   			 </a>
+			      	</div>
+
+    <ion-list style="background-color: #f8f8f8;">
+     <!-- <ion-item>
+        <div class="row">
+          <div class="col col-center">
+			           		 <span style=" font-size: 15px; color:#FF9900;">{{balance}} 元</span>
+			           		<br>
+			           		 <span style="font-size: 12px;">余额</span>
+          </div>
+          <div class="col col-center">
+				            		<span style=" font-size: 15px; color:#FF5F3E;">{{integral}} 分</span><br>
+				            		<span style="font-size: 12px;">积分</span>
+          </div>
+          <div class="col col-center">
+		            		<span style=" font-size: 15px; color:#6AC20B;">0个</span><br>
+		            		<span style="font-size: 12px;">优惠券</span>
+
+          </div>
+        </div>
+      </ion-item>-->
+
+     	<div class="item" style="padding:10px">
+	        <div class="row">
+		          <div class="col col-25">
+		            <span class="c"><span style=" font-size: 14px; font-family: '微软雅黑';">当前车型：</span></span>
+		          </div>
+
+					<div class="col col-60 text-left" ng-if="CarCode.Brand == null" style="height: 32px; border-radius: 5px; font-size: 14px;">
+						<input placeholder="请点击更正选择车型" style=" border:none;font-size: 14px; font-family: '微软雅黑';" />
+					</div>
+		          <div class="col col-60" ng-if="CarCode.Brand !=null" style="height: 32px; border-radius: 5px; font-size: 14px;">
+		            	{{CarCode.Brand}} {{CarCode.CarXi}}
+		              {{CarCode.Engine}} {{CarCode.Year}}
+		              <!--{{CarCode.Configuration}}-->
+		          </div>
+
+				  <div class="col col-15" style="padding:0px">
+			          <a class="button button-assertive button-small"
+		               ng-href="#/tab/setCarType1" style="float: right;"
+		               ng-disabled="changeCars">
+			            <span style="font-size: 14px; font-family: '微软雅黑'; width: 50px; height: 32px; display: inline-block;line-height: 32px;" >更正</span>
+			          </a>
+				 </div>
+
+	        </div>
+     	</div>
+    </ion-list>
+
+    <!--服务-->
+    <div class="row" style="padding-top:7px;padding-left: 0px">
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="myOder1()"><img src="img/personcenter1.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">我的订单</div>
+        </a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="collection1()"><img src="img/personcenter2.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">我的收藏</div>
+        </a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="shippingAddress1()"><img src="img/personcenter3.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">收货地址</div></a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="Maintenance1()"><img src="img/personcenter4.png" style="width: 60px;height: 60px">
+        <div style="font-size: 14px; font-family: '微软雅黑';">预约维修店</div>
+        </a>
+      </div>
+
+
+    </div>
+
+    <div class="row" style="padding-top:7px;padding-left: 0px">
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="ReservationRecord1()"><img src="img/personcenter5.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">预约记录</div></a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a ng-click="bookGoods()" class=" button button-img-div3"><img src="img/personcenter6.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">预约商品</div></a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="OnBehalOfTheCar1()"><img src="img/personcenter7.png" style="width: 60px;height: 60px">
+        <div style="font-size: 14px; font-family: '微软雅黑';">代购车</div>
+        </a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3"  ng-click="returnsManagement1()"><img src="img/personcenter8.png" style="width: 60px;height: 60px">
+        <div style="font-size: 14px; font-family: '微软雅黑';">退换货管理</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row" style="padding-top:7px;padding-left: 0px">
+      <div class="col col-25" style="background-color: #f8f8f8;">
+      <!--  <a class=" button button-img-div3" ng-click="SystemNotification1()">
+          <img src="img/p8.png" style="width: 60px;height: 60px">
+        <div style="font-size: 14px; font-family: '微软雅黑';">系统通知</div></a>-->
+        <a class=" button button-img-div3" ng-click="SystemNotification1()">
+          <img src="img/personcenter7.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">系统通知</div></a>
+      </div>
+
+
+
+	 <div class="col col-25" style="background-color: #f8f8f8;">
+       <!-- <a class=" button button-img-div3" ng-click="ReservationCommodity1()">
+          <img src="img/p7.png" style="width: 60px;height: 60px">
+        <div style="font-size: 14px; font-family: '微软雅黑';">商品评价</div>
+        </a>-->
+         <a class=" button button-img-div3" ng-click="ReservationCommodity1()">
+           <img src="img/personcenter8.png" style="width: 60px;height: 60px">
+           <div style="font-size: 14px; font-family: '微软雅黑';">商品评价</div>
+         </a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3" ng-click="shopCart1()"><img src="img/personcenter3.png" style="width: 60px;height: 60px">
+          <div style="font-size: 14px; font-family: '微软雅黑';">购物车</div>
+        </a>
+      </div>
+
+      <div class="col col-25" style="background-color: #f8f8f8;">
+        <a class=" button button-img-div3"></a>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

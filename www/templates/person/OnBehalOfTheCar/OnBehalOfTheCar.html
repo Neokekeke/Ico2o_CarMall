@@ -1,0 +1,94 @@
+<ion-view title="代购车" hide-tabs="true">
+  <ion-content  >
+    <ion-list>
+    <div class="item item-text-wrap" ng-repeat="shopcar in myShopcar" style="padding:5px">
+      <div class="row">
+		        <div class="col col-25 " style="padding:0px">
+		          <img src="{{host_ico2o}}{{shopcar.ImagePath}}" style="width: 80px;height: 80px;">
+		        </div>
+
+		        <div class="col col-55 " style="margin-left:1%;padding:0px;">
+				          <div class="row">
+				            <span>商品:{{shopcar.Name}}</span>
+				          </div>
+
+				          <div class="row">
+				            	发货地：
+				              <select style="border-radius: 5px; height: 25px;">
+				                <option value="北京">北京</option>
+				                <option value="广州">广州</option>
+				                <option value="珠海">珠海</option>
+				              </select>
+				          </div>
+
+			          <div class="row">
+			            <span>价格{{"￥:"+shopcar.Price+" 元"}}
+
+			            </span>
+			          </div>
+			            <div class="row">
+			            <span>需支付定金：{{shopcar.Price * 0.3 | number:2}}元
+			            </span>
+			          </div>
+
+								<div class="row">
+					            <span>数量：</span>
+                  <a style="width: 30px;height: 30px;min-width: 10px;line-height: 30px;" ng-click="minus($index)">
+                    <i class="ion-minus-circled" style="font-size: 20px;"></i>
+                  </a>
+                  <div style="margin:3% 3% 3% 3%;">{{shopcar.Quantity}}</div>
+                  <a style="width: 30px;height: 30px;min-width: 10px;line-height: 30px;" ng-click="plus($index)">
+                    <i class="ion-plus-circled" style="font-size: 20px;"></i>
+                  </a>
+                </div>
+							</div>
+							<div class="col col-20">
+			      				<div class="row">
+				      					 <ion-checkbox style="border-style: none"
+		                        ng-click="isSelected($index)"
+		                        ng-checked="Selected[$index]">
+		          						</ion-checkbox>
+			      				</div>
+				            <div class="row" style="margin-top: 5px;">
+					            	<button class="button button-small row-center"
+                                ng-click="delShopcar(shopcar.ID,$index)"
+                                style="height: 30px; width: 30px;margin:auto;background-color: #D1D3D6;">
+			                		 <i class="ion-ios-trash-outline" style="height: 20px;width: 20px;color:#444444;"></i>
+			               		 </button>
+				            </div>
+			          </div>
+		  </div>
+     </div>
+   </ion-list>
+
+
+    <ion-infinite-scroll
+      ng-if="hasmore"
+      on-infinite="loadMore1()"
+      distance="5%"
+    immediate-check="false">
+    </ion-infinite-scroll>
+
+  </ion-content>
+  <ion-footer-bar style="background-color: #2076c0;">
+    <ion-checkbox class="col-center" style="border-style: none;background-color: #2076c0;height:44px;line-height: 14px;border-style: none"
+                  ng-model="selectAllProduct"
+                  ng-click="selectAllProducts()"
+                  ng-checked="setBoxCheckedIndex">
+      <span style="color: white;"
+            ng-click="selectAllProducts()"
+            ng-if="!selectAllProduct">全选
+      </span>
+      <span style="color: white;"
+            ng-click="selectAllProducts()"
+            ng-if="selectAllProduct">取消
+      </span>
+    </ion-checkbox>
+    <div class="col" style="text-align: left; color: white; margin-left: 10px; line-height: 27px;">
+        <span>订金总价：{{dingjinSum}}元</span>
+    </div>
+        <button class="button button-assertive button-small" style="float: right" ng-click="payOrder()">
+          支付订金
+        </button>
+</ion-footer-bar>
+</ion-view>

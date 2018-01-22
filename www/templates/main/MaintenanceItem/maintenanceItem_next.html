@@ -1,0 +1,86 @@
+<ion-view title="保养项目" hide-tabs="true"  style="padding-left: 10px;padding-right: 10px;">
+	<ion-nav-buttons side="right" style='padding-right: 10px;'>
+		<a ng-href="#/tab/main/shopCart">
+			<img src="img/main/top_shoppingcart.png" style="width: 30px;height: 30px;" >
+		</a>
+	</ion-nav-buttons>
+<!--
+	作者：黄
+	时间：2016-12-05
+	描述：进行页面调整：删去部分内容；加入删除按钮
+-->
+<!--	<div class="bar bar-subheader" style="height: 50px; background-color: #2076C0;color: white;padding-left: 10px;padding-right: 10px;">
+			<div class="text-left">
+				<span style="font-size: 14px;font-family: '微软雅黑';">本次保养公里数：{{KMMessage[0].KM || 0}}公里</span><br />
+				<span style="font-size: 14px;font-family: '微软雅黑';">本次保养日期 {{KMMessage[0].KMDate}}</span>
+			</div>
+
+				<button class="button pull-right" style="margin-top: 4px;margin-right: 10px;width: 70px;height: 32px;font-size: 14px;font-family: '微软雅黑';">
+	       			 更正
+	      	</button>
+	</div>-->
+
+	<ion-content class='has-footer'>
+		<div class="item" ng-if="!isList">
+			<p style="font-size: 14px;font-family: '微软雅黑';">无相关的保养产品</p>
+		</div>
+		<div class="list" ng-if="isList">
+
+			<div ng-repeat="list in MaintianceItemDatas" ng-if="list.Products.length != 0">
+
+				<div class="row" style="height: 35px;border-bottom: #e1e1e1 2px solid;padding-left: 10px;padding-right: 10px;">
+					<div class="col col-27">
+						<span style="font-size: 14px;font-family: '微软雅黑';margin-right: 20%;">{{maintenanceNameList[$index]}}</span>
+					</div>
+					<div class="col text-right">
+						<span style="font-size: 14px;font-family: '微软雅黑';">小计：{{priceList[$index] |currency:""}}元</span>
+					</div>
+				</div>
+				<!--粗线-->
+				<!--<hr style="size: 2px;background-color: #e1e1e1;"></hr>-->
+				<div ng-repeat="productItem in list.Products">
+					<div class="row" style="border-bottom: 1px solid #ddd;">
+						<div class="col col-30">
+							<img src="{{host}}/{{productItem.ImagePath}}" style="height: 100px;">
+						</div>
+						<div class="col col-45 text-left">
+							<div class="row row-top" style="font-size: 14px;font-family: '微软雅黑';">
+								{{productItem.ProName}}(1件)
+							</div>
+							<div class="row" style="padding-top: 15px;">
+								<span style="font-size: 14px;font-family: '微软雅黑';"><s style="font-size: 12px;">{{productItem.MarketPrice |currency:"￥"}}</s>{{productItem.ShopPrice|currency:"￥"}}</span>
+							</div>
+						</div>
+						<div class=" col col-25">
+							<span class="button" style="background-color: #FFFFFF;padding-left: 40%;" ng-click="deletePro(list,productItem.ProID,$index)">
+								<i class="icon ion-trash-a" style="font-size: 32px;"></i>
+							</span>
+							<span class="button button-small button-assertive" style="font-size: 10px;font-family: '微软雅黑';height: 32px;">
+                  				选择品牌件
+               				</span>
+						</div>
+					</div>
+				</div>
+				<div style="background-color: #CCCCCC;height: 6px;width: 100%;padding-left: -10px;"></div>
+			</div>
+
+		</div>
+	</ion-content>
+	<div class="bar bar-footer" style="height: 46px;background-color: #2076c0;color: white;padding-left: 10px;padding-right: 10px;">
+		<div style="text-align: center;">
+			<span style="font-size: 14px;font-family: '微软雅黑';">总价（不含运费）：{{totalPrice|currency:""}}元</span>
+		</div>
+		<button class="button button-assertivee pull-right" style="height: 32px;margin-right: 10px;margin-top: 3px;" ng-click="addToShopCart()">
+      		<span style="font-size: 14px;font-family: '微软雅黑';">加入购物车</span>
+   		 </button>
+	</div>
+<!--	<div class="bar bar-footer" style="height: 50px;background-color: #2076c0;color: white;padding-left: 10px;padding-right: 10px;padding-bottom: 8px;">
+		<div class="text-left">
+			<span style="font-size: 14px;font-family: '微软雅黑';">上次保养公里数：{{KMMessage[1].KM || 0}}公里</span><br>
+			<span style="font-size: 14px;font-family: '微软雅黑';">上次保养日期 {{KMMessage[1].KMDate}}</span>
+		</div>
+		<button class="button button-assertivee pull-right" ng-click="goMaintenance()" style=" width: 83px;height: 32px;margin-top: 5px;margin-right: 10px;">
+      		<span style="font-size: 14px;font-family: '微软雅黑';">去保养</span>
+   		 </button>
+	</div>-->
+</ion-view>

@@ -1,0 +1,59 @@
+<ion-view title="注册" hide-tabs="true">
+
+	<ion-content class="padding ">
+		<form role="form" name="myForm" class="form-horizontal" novalidate>
+			<!--邮箱-->
+			<span class="item item-input" style="padding: 0px;">
+       <span class="input-label" style="font-size:14px ;width:65px ;padding: 0px;">手机号</span>：&nbsp;
+       <input ng-model="user.username"  type="text" name="phone" ng-pattern="/^1[34578]\d{9}$/" style="border-style: none;max-width: 66%;"  placeholder="请输入11位手机号" autocomplete="off" required>
+    <i class="ion-checkmark-round" ng-show="myForm.phone.$dirty && myForm.phone.$valid"></i>
+			</span>
+
+			<!--密码-->
+			<label class="item item-input" style="padding: 0px;">
+       <span class="input-label" style="font-size:14px ;width:65px ;padding: 0px;">密码</span>：&nbsp;<input ng-model="user.password" type="password"  name="password" ng-minlength="6" ng-maxlength="16" style="border-style: none;max-width: 66%;" placeholder="6-16位字符" required>
+    <i class="ion-checkmark-round" ng-show="myForm.password.$dirty && myForm.password.$valid"></i>
+			</label>
+
+			<!--确认密码-->
+			<label class="item item-input" style="padding: 0px;">
+       <span class="input-label" style="font-size:14px ;width:65px ;padding: 0px;">确认密码</span>：&nbsp;<input ng-model="user.confirmPassword"  type="password" name="confirmPassword" ng-minlength="6" ng-maxlength="16" style="border-style: none;max-width: 66%;" placeholder="6-16位字符" required>
+    <i class="ion-checkmark-round" ng-show="user.password==user.confirmPassword&&myForm.confirmPassword.$dirty && myForm.confirmPassword.$valid"></i>
+    </label>
+
+			<!--验证码-->
+      <!--柯尊仁修改验证码-->
+			<span class="item item-input" style="padding: 0px;">
+				<span class="input-label" style="font-size:14px ;width:65px ;padding: 0px;">验证码 </span>：&nbsp;
+			<input ng-model="user.number" name="number" ng-pattern="/^\d{6}$/" type="text" style="border-style: none;padding: 0px;" required >
+			<button
+        style="
+        font-size: 14px;
+        cursor:pointer;
+        background-color: #1e77c0;
+        height: 30px;
+        width:100px;
+        color: white;
+        border-radius:5px;
+        margin-top:2px ;
+        margin-right:2px;
+        margin-bottom:2px;
+        margin-left:2px"
+        ng-click="get_verification_code()"
+        ng-disabled="codeNum">
+        {{codetime}}
+      </button>
+			</span>
+
+			<input ng-disabled="myForm.$invalid||user.password!=user.confirmPassword" type="button" class="button button-block button-assertive button-small" style="background-color: #1e77c0;" value="注册" ng-click="register()" />
+
+			<span ng-if='user.confirmPassword!=""&&user.confirmPassword!=null&&user.password!=user.confirmPassword'>
+    	密码不一致    <br />
+    </span>
+			<span>
+    	{{tip}}
+    </span>
+
+			</form>
+	</ion-content>
+</ion-view>

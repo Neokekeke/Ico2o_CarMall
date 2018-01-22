@@ -1,0 +1,31 @@
+<ion-view title="保养项目" hide-tabs="true">
+
+  <ion-nav-buttons side="right">
+    <button class="button button-small button-clear"
+            style="width: 50px;height: 50px;" ng-click="allSelect()"><span
+      style="color: white">{{AllSelectButton}}</span>
+    </button>
+  	</ion-nav-buttons>
+  <ion-content>
+    <div class="input input-inset" ng-repeat="item in MaintenanceItem">
+      <div class="row item">
+        <div class="col">{{item.MaintenanceItemName}}</div>
+        <div class="col">工时费:{{item.ReferenceFee}}</div>
+        <div class="col">
+          <ion-checkbox style="border-style: none;" ng-model="item.Checked"
+                        ng-click="refreshItemChecked()"></ion-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-offset-67">总额:{{TotalItemPrice}}</div>
+    </div>
+    <div class="row">
+      <div class="col col-offset-80">
+        <button class="button button-small button-block button-energized" ng-click="selectItem()">完成
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Provinces>
+  <Province ID="0" Name="请选择" ParentID="0">请选择</Province>
+  <Province ID="1" Name="北京" ParentID="0">北京</Province>
+  <Province ID="2" Name="天津" ParentID="0">天津</Province>
+  <Province ID="3" Name="河北省" ParentID="0">河北省</Province>
+  <Province ID="4" Name="山西省" ParentID="0">山西省</Province>
+  <Province ID="5" Name="内蒙古自治区" ParentID="0">内蒙古自治区</Province>
+  <Province ID="6" Name="辽宁省" ParentID="0">辽宁省</Province>
+  <Province ID="7" Name="吉林省" ParentID="0">吉林省</Province>
+  <Province ID="8" Name="黑龙江省" ParentID="0">黑龙江省</Province>
+  <Province ID="9" Name="上海" ParentID="0">上海</Province>
+  <Province ID="10" Name="江苏省" ParentID="0">江苏省</Province>
+  <Province ID="11" Name="浙江省" ParentID="0">浙江省</Province>
+  <Province ID="12" Name="安徽省" ParentID="0">安徽省</Province>
+  <Province ID="13" Name="福建省" ParentID="0">福建省</Province>
+  <Province ID="14" Name="江西省" ParentID="0">江西省</Province>
+  <Province ID="15" Name="山东省" ParentID="0">山东省</Province>
+  <Province ID="16" Name="河南省" ParentID="0">河南省</Province>
+  <Province ID="17" Name="湖北省" ParentID="0">湖北省</Province>
+  <Province ID="18" Name="湖南省" ParentID="0">湖南省</Province>
+  <Province ID="19" Name="广东省" ParentID="0">广东省</Province>
+  <Province ID="20" Name="广西壮族自治区" ParentID="0">广西壮族自治区</Province>
+  <Province ID="21" Name="海南省" ParentID="0">海南省</Province>
+  <Province ID="22" Name="重庆" ParentID="0">重庆</Province>
+  <Province ID="23" Name="四川省" ParentID="0">四川省</Province>
+  <Province ID="24" Name="贵州省" ParentID="0">贵州省</Province>
+  <Province ID="25" Name="云南省" ParentID="0">云南省</Province>
+  <Province ID="26" Name="西藏自治区" ParentID="0">西藏自治区</Province>
+  <Province ID="27" Name="陕西省" ParentID="0">陕西省</Province>
+  <Province ID="28" Name="甘肃省" ParentID="0">甘肃省</Province>
+  <Province ID="29" Name="青海省" ParentID="0">青海省</Province>
+  <Province ID="30" Name="宁夏回族自治区" ParentID="0">宁夏回族自治区</Province>
+  <Province ID="31" Name="新疆维吾尔自治区" ParentID="0">新疆维吾尔自治区</Province>
+  <Province ID="32" Name="香港特别行政区" ParentID="0">香港特别行政区</Province>
+  <Province ID="33" Name="澳门特别行政区" ParentID="0">澳门特别行政区</Province>
+  <Province ID="34" Name="台湾省" ParentID="0">台湾省</Province>
+  <Province ID="35" Name="其他" ParentID="0">其他</Province>
+</Provinces>

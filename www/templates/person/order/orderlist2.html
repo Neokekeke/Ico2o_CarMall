@@ -1,0 +1,57 @@
+<ion-view title="订单详情" hide-tabs="true">
+  <ion-content>
+    <div class="list">
+        <div class="row" ng-model="status"><span class="o"><b>{{"订单状态："+orderitem.Status}}</b></span></div>
+        <div class="row"><span>{{"收货人: "+orderitem.Name}}</span></div>
+        <div class="row"><span>{{"收货地址："+orderitem.Address}}</span></div>
+
+
+        <div class="row" ng-repeat="orderitems in orderitem.ListOrdersItem ">
+          <div class="col">
+            <img src="http://www.ico2o.cn/{{orderitems.ImagePath}}"
+                 style="width: 100px;height:100px" ng-click="openModal_mainList(orderitems.ProductID)">
+          </div>
+
+          <div class="col">
+            <div class="row">
+              <span>{{orderitems.Name}}</span><br>
+            </div>
+            <div class="row">
+              <span>属性：白色</span>
+            </div>
+            <div class="row">
+              <span>{{"￥: "+orderitems.Price+""+" 元"}}</span><br>
+            </div>
+            <div class="row">
+              <span>{{"数量："+orderitems.Quantity}}个</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col">
+          <div class="row">
+            <span class="h">{{"钉箱: "+orderitem.OtherPrice+" 元"}}</span><br>
+          </div>
+          <div class="row">
+            <span class="h">{{"运费："+orderitem.OtherPrice+" 元"}}</span>
+          </div>
+          <div class="row">
+            <span class="h">{{"实付款: "+TotalSum1+" 元"}}</span>
+          </div>
+
+          <div class="row">
+            <span>{{"订单编号："+orderitem.OrderNO}}</span><br>
+          </div>
+          <div class="row">
+            <span>{{"创建订单："+orderitem.CreatedDate}}</span><br>
+          </div>
+          <div class="row">
+            <span>{{"完成订单：null"}}</span><br>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

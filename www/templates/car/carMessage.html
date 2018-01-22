@@ -1,0 +1,82 @@
+<ion-view title="爱车详情" hide-tabs="true">
+  <ion-content>
+    <div class="item row">
+      <div class="col col-75" style="text-align: left">
+        <button class="button button-small button-grey" ng-click="deleteCar()">删除</button>
+      </div>
+      <div class="col col-25" style="text-align: right"><ion-checkbox ng-click="UpdateDefault()" ng-checked="car.IsDefault" style="padding-right: 0px;padding-left: 45px;padding-top: 5px;padding-bottom: 5px;border:none" class="item-checkbox-left">
+        <div style="text-align: left;vertical-align: middle">默认</div></ion-checkbox>
+      </div>
+    </div>
+    <div class="item" style="text-align: left;background-color: rgba(0, 0, 0, 0.5)">
+      <span style="color: white">基本信息</span>
+    </div>
+    <div class="item" style="padding: 3px;">
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">车架号:</span>
+        <span class="col-67" style="text-align: left">{{car.CarNumber}}</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">车牌号:</span>
+        <span class="col-67" style="text-align: left">暂无后台</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">购买日期:</span>
+        <span class="col-67" style="text-align: left">{{CreatedDate}}</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">已行驶:</span>
+        <span class="col-67" style="text-align: left">{{car.Drive_KM}}</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-50" style="text-align: left">发动机号后6位数:</span>
+        <span class="col-50" style="text-align: left">{{car.Motor_LastSixNumber}}</span>
+      </span>
+    </div>
+    <div class="item" style="text-align: left;background-color: rgba(0, 0, 0, 0.5)">
+      <span style="color: white">常规保养</span>
+    </div>
+    <div class="item" style="padding: 3px">
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">上次保养公里数：</span>
+        <span class="col-25" style="text-align: left">{{car.LastMaintenanceKM}}公里</span>
+        <span class="col-10" style="text-align: left">日期：</span>
+        <span class="col-10" style="text-align: left">{{LastMaintenanceDate}}</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 10px">
+        <span class="col-33" style="text-align: left">下次保养公里数：</span>
+        <span class="col-25" style="text-align: left">{{car.LastMaintenanceKM+5000}}公里</span>
+        <span class="col-10" style="text-align: left">日期：</span>
+        <span class="col-10" style="text-align: left">{{NextMaintenanceDate}}</span>
+      </span>
+      <span class="row" style="padding-bottom: 10px;padding-top: 0px">
+          <button style="height: 50%" class="button button-block button-small button-energized">
+            去保养
+          </button>
+      </span>
+    </div>
+    <div class="item row" ng-click="goOilRecord()">
+        <span class="col" style="text-align: left">加油记录</span>
+        <span class="col" style="text-align: right">></span>
+    </div>
+   <!-- <div class="item" style="text-align: left;background-color: rgba(0, 0, 0, 0.5)">
+      <span style="color: white">维修记录</span>
+    </div>
+    <div class="item" style="padding: 7px">
+        <span class="row">
+        <span class="col-25"><input style="padding: 0px;border-radius: 5px" type="date" ng-model="OilRecord.StartTime"></span>
+          <span class="col-10">至</span>
+          <span class="col-25"><input style="padding: 0px;border-radius: 5px" type="date" ng-model="OilRecord.EndTime"></span>
+        <span class="col-offset-10" style="text-align:right;padding-left: 7px">
+          <button class="button button-energized button-small" ng-click="selectOil()">
+            查看
+          </button>
+        </span>
+        </span>
+        <span class="row" ng-repeat="item in OilRecord_got">
+          <span class="col-10"></span>{{item.AddTime}}
+        </span>
+    </div>-->
+
+  </ion-content>
+</ion-view>

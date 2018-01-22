@@ -1,0 +1,220 @@
+<!--主页-9.12-->
+<ion-view title="主页" hide-nav-bar="true">
+	<div class="bar bar-header item-input-inset" style="height: 55px; background-color: #2076C0;">
+		<img src="img/main/main_logo.png" style="width: 91px;height: 40px" ng-if="CarSelect">
+
+		<button class="button button-clear button-small" ng-click="checkLoginsetCarType()">
+
+          <span style="font-weight: 100; color: white; font-size: 15px; "ng-if="CarSelect">
+          	<img src="img/main/main_add_car.png" style="width: 20px;height: 20px; vertical-align: text-top;" >
+          	添加车型
+          </span>
+
+      <!--柯尊仁修改，车型显示位置有问题-->
+         <span style="font-size: 16px;color: white" ng-if="!CarSelect">
+                          {{CarCode.Brand}}&nbsp;
+                          {{CarCode.CarXi}}&nbsp;
+                          {{CarCode.Engine}}&nbsp;
+                          {{CarCode.Year}}&nbsp;
+                          <!--{{CarCode.Configuration}}&nbsp;&nbsp;-->
+        </span>
+
+<!--<span style="font-size: 16px;color: white" ng-if="!CarSelect && carType != null">
+         	{{carType}}
+        </span>-->
+      </button>
+
+		<label class="item-input-wrapper" style="margin-left: 2px;"  ng-click="goToSearch()"><!-- ng-enter="searchProduct(proName)-->
+		    <input type="search" placeholder="请输入配件名称" style="font-size: 14px;" readonly="readonly" disabled="disabled">
+		     <a  style="font-size: 20px;">
+		     	<i class="icon ion-search placeholder-icon"></i>
+		     </a>
+		  </label>
+
+	</div>
+
+	<!-- <div class="bar bar-subheader bar-ico2o">-->
+
+	<!--把选择的车信息显示-->
+	<!--  <div class="row">
+      <div class="col col-offset-10" style="color: white">
+        <span style="font-size: 16px" ng-show="CarMessage">
+                          {{CarCode.Brand}} {{CarCode.Gearbox}}
+                          {{CarCode.Engine}} {{CarCode.Year}}
+                          {{CarCode.Configuration}}
+        </span>
+
+        <span style="font-size: 16px" ng-show="!CarMessage">
+                          {{CarCode1.Brand}} {{CarCode1.Gearbox}}
+                          {{CarCode1.Engine}} {{CarCode1.Year}}
+                          {{CarCode1.Configuration}}
+        </span>
+      </div>
+
+      <button class="button button-clear button-small" ui-sref="tab.setCarType" style="float:right">
+        <img src="img/main/def_car.png" style="width: 70%;height: 70%">
+      </button>
+
+    </div>-->
+	<!--选择车完成-->
+	<!--  </div>-->
+
+	<ion-content style="margin-top:53px" onload="$scope.BindCar()">
+		<ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval=2000 show-pager="true" pager-click="pageClick(index)" active-slide="model.activeIndex" delegate-handle="delegateHandler">
+			<!--does-continue,是否循环播放，默认是循环的, auto-play,是否自动播放，如果does-continue为真他就是真的，自动播放,slide-interval，间隔时间，默认4秒，可设置，单位是毫秒,show-pager,是否显示小圆点了，active-slide默认显示,当前图片的下标与实体类的属性绑定-->
+			<ion-slide>
+				<div class="box">
+					<img src="img/main/top_adone.jpg">
+				</div>
+			</ion-slide>
+			<ion-slide on-slide-changed="slideHasChanged(index)">
+				<div class="box">
+					<img src="img/main/top_adtwo.jpg">
+				</div>
+			</ion-slide>
+		</ion-slide-box>
+
+		<!--
+    	作者：guoge
+    	时间：2016-10-09
+    	描述：轮播图下面的是个选项卡（自助保养，附件维修店，查找配件，加油记录）
+    -->
+		<div class="row" style="padding:0;margin:6px 0; border-bottom: 1px solid #ddd;border-style: solid;">
+			<div class=" col-25">
+				<a style="text-decoration: none">
+					<button class="button button-img-div" style="margin:0 0 0 0;background-color: white;" ng-click="checkLoginMaintenance()">
+            <img src="img/main/main_Selfservice.png">
+            <div>自助保养</div>
+          </button>
+				</a>
+			</div>
+			<div class="col-25">
+				<a style="text-decoration: none" ng-click="checkLoginRepairShop()">
+					<button class="button button-img-div" style="margin:0 0 0 0;background-color: white;">
+            <img src="img/main/main_Repairshop.png">
+            <div>附件维修店</div>
+          </button>
+				</a>
+			</div>
+			<div class="col-25">
+				<a style="text-decoration: none" ng-click="checkLoginProduct()">
+					<button class="button button-img-div" style="margin:0 0 0 0;background-color: white;">
+            <img src="img/main/main_Findaccessories.png">
+            <div>查找配件</div>
+          </button>
+				</a>
+			</div>
+			<div class="col-25">
+				<a style="text-decoration: none" ng-click="checkLoginAddHistory()">
+					<button class="button button-img-div" style="margin:0 0 0 0;background-color: white;">
+            <img src="img/main/main_Refuelingrecord.png">
+            <div>加油记录</div>
+          </button>
+				</a>
+			</div>
+		</div>
+
+		<!--去保养搜索框-->
+		<div class="list" style=" margin:5px 0 5px 0; border-bottom: 1px solid #ddd; height: 40px;">
+			<div class="item item-input-inset" style=" margin: 0 0 10px 10px ;padding:0;border:none;">
+				<label class="item-input-wrapper">
+					    <input placeholder="请输入当前公里数" type="text" ng-model="Get.kmNum" onkeyup="this.value=this.value.replace(/D/g,'')" onbeforepaste="this.value=this.value.replace(/D/g,'')"  style="font-size: 14px;height: 32px;line-height: 32px;">
+					  </label>
+				<button class=" button-positive" ng-click="goToProList()" style="height:32px;background-color: #2076c0;margin-right: 10px; margin-left: 10px; color: white; border-radius:5px;border:none">
+					   前往保养
+        </button>
+			</div>
+		</div>
+
+		<!--注：按钮需由图标和文字组成-->
+		<!--<div class="row" style="padding:0;margin:0;">
+      <div class=" col-33">
+        <a style="text-decoration: none" ng-href="#/tab/main/maintenanceItem">
+          <button class="button button-small button-block" style="margin:0 0 0 0;">
+            <img src="img/main/mine_service_order.png"><br>
+            <span>常规保养</span>
+          </button>
+        </a>
+      </div>
+      <div class="col-33">
+        <a style="text-decoration: none" ng-href="#/tab/beautyCare">
+          <button class="button button-small button-block" style="margin:0 0 0 0;">
+            <img src="img/main/mine_tab_auto.png"><br>
+            <span>美容护理</span>
+          </button>
+        </a>
+      </div>
+
+    </div>-->
+
+		<!--
+    	作者：guoge
+    	时间：2016-10-09
+    	描述：首页打折商品、包邮商品、优惠组合、限时抢购部分
+    -->
+		<div class="row" style=" margin:0;padding:0">
+			<div class="col-25">
+				<a style=" width: 100%;height: 100%;" ng-href="#">
+					<img src="img/main/commodity_01.png" style=" width: 100%;height: 95px;">
+				</a>
+			</div>
+
+			<div class="col-50">
+				<a style="text-decoration: none" ng-href="#">
+					<img src="img/main/commodity_03.png" style=" width: 100%;height: 95px;">
+				</a>
+			</div>
+
+			<div class="col-25">
+				<a style="text-decoration: none" ng-href="#">
+					<img src="img/main/commodity_02.png" style=" width: 100%;height: 95px;">
+				</a>
+			</div>
+		</div>
+		<div class="row" style="padding:0;margin:0;border-bottom: 1px solid #ddd;border-style: solid;">
+			<div class="col-25">
+				<a style="text-decoration: none" ng-href="">
+					<button class="button button-img-div " ng-click="preferentialCombination()" style="background-color: white;">
+            <img src="img/main/main_Preferentialcombination.png" style="height: 70px;width: 70px;">
+            <div>优惠组合</div>
+         	</button>
+				</a>
+			</div>
+			<div class="col-25">
+				<a style="text-decoration: none" ng-href="#">
+					<button class="button button-img-div " ng-click="preferentialGoods()" style="background-color: white;">
+            <img src="img/main/main_discount.png" style="height: 70px;width: 70px;">
+            <div>打折商品</div>
+          </button>
+				</a>
+			</div>
+			<div class="col-25">
+				<a style="text-decoration: none" ng-href="#">
+					<button class="button button-img-div" ng-click="freeShippingGoods()" style="background-color: white;">
+            <img src="img/main/main_Freeshipping.png" style="height: 70px;width: 70px;">
+            <div>包邮商品</div>
+          </button>
+				</a>
+			</div>
+
+			<div class="col-25">
+				<a style="text-decoration: none" ng-href="#">
+					<button class="button button-img-div " ng-click="flashSale()" style="background-color: white;">
+            <img src="img/main/main_Flashsale.png" style="height: 70px;width: 70px;">
+            <div>限时抢购</div>
+         </button>
+				</a>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 5px;">
+			<div class="col col-20">
+				<span style="color:#2076C0; font-weight: bold; font-size: 15px; font-family: '微软雅黑';">爱车头条</span>
+			</div>
+			<div class="col col-80">
+				<span style="color:#555454; font-size: 14px; font-family: '微软雅黑';">关于升级网络宽带商城暂停服务通知</span>
+			</div>
+		</div>
+
+	</ion-content>
+</ion-view>

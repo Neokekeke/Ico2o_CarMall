@@ -1,0 +1,83 @@
+<ion-view title="选择车型" hide-tabs="true">
+  <ion-content>
+    <div style="background-color: lightgray">
+      <div class="row" style="padding-left: 10px;padding-top: 8px;padding-bottom: 10px;padding-right: 10px">
+          <span style="font-size: 14px;color: #505050">方法一：</span>
+          <span style="font-size: 14px;color: #505050">填写车架号</span>
+        <span style="font-size: 14px;color:#9e9c9c">（方法一和方法二选其一即可）</span>
+      </div>
+
+      <div class="row" style="padding-left: 10px;padding-bottom: 10px;padding-right: 8px">
+        <label class="item item-input" style="font-size: 14px;width: 100%;height: 32px;">
+          <input type="text" ng-model="GetModelCode" placeholder="请输入车架号">
+        </label>
+        <button class="button button-assertive button-small" ng-click="GetCarByHorse(GetModelCode)" style="font-size: 14px;width: 75px;margin-left: 8px">确定</button>
+      </div>
+    </div>
+
+    <div class="row" style="padding-left: 10px;padding-top: 10px;">
+        <span style="font-size: 14px">方法二：</span>
+    </div>
+
+      <span>
+        <center>
+          <span style="font-size: 14px">品牌：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.Brand"
+                  ng-options="car for car in CarBrand">
+            <!--<option value=""  >-- 请选择 --</option>-->
+          </select>
+        </center>
+
+        <center>
+          <span style="font-size: 14px">车型：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.CarXi"
+                  ng-options="carxi for carxi in CarXi">
+            <option value="" style="font-size: 14px;color: #9e9c9c">-- 请按顺序选择 --</option>
+          </select>
+        </center>
+
+        <center>
+          <span style="font-size: 14px">年款：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.Year"
+                  ng-options="year for year in Years">
+            <option value="" style="font-size: 14px;color: #9e9c9c">-- 请按顺序选择 --</option>
+          </select>
+        </center>
+
+        <center>
+          <span style="font-size: 14px">排量：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.Engine"
+                  ng-options="engine for engine in Engines">
+            <option value="" style="font-size: 14px;color: #9e9c9c">-- 请按顺序选择 --</option>
+          </select>
+        </center>
+
+        <center>
+          <span style="font-size: 14px;color: #505050">版本：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.Configuration"
+                  ng-options="configuration for configuration in Configuration">
+            <option value="" style="font-size: 14px;color: #9e9c9c">-- 请按顺序选择 --</option>
+          </select>
+        </center>
+
+        <center>
+          <span style="font-size: 14px;color: #505050">波箱：</span>
+          <select style="width:50%;height: 32px;margin-bottom: 10px"
+                  ng-model="select.Gearbox"
+                  ng-options="gearbox for gearbox in Gearbox">
+            <option value="" style="font-size: 14px;color: #9e9c9c">-- 请按顺序选择 --</option>
+          </select>
+        </center>
+
+         <center>
+           <button class="button button-assertive button-small" ng-click="Confirm()" style="width: 50px;font-size: 14px">确定</button>
+         </center>
+      </span>
+
+  </ion-content>
+</ion-view>

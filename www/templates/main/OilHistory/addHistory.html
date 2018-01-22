@@ -1,0 +1,95 @@
+<ion-view title="加油记录" hide-tabs="true">
+  <ion-nav-buttons side="right">
+    <a class="button button-clear" style="color: white" ng-click="goOilHistory()">加油历史</a>
+  </ion-nav-buttons>
+  <ion-content class="has-header">
+    <div class="item item-input row" style="border-style: none;padding-left: 26px">
+      <span style="font-size: 14px;color: #9e9c9c">
+        以下均为必填项
+      </span>
+    </div>
+    <div class="list" style="padding-left: 10px;padding-right: 10px">
+       <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px">
+              <span class="col-25">
+                <span class="input-label" style="width: 100%;text-align: left;font-size: 14px;color: #505050">油单价：</span></span>
+              <span class="col-33"><input style="padding-right: 0px;font-size: 14px;color: #505050" type="text" ng-model="AddOil.Price"
+                                          onkeyup="value=value.replace(/[^\d.]/g,'');
+this.value=/^\d+\.?\d{0,1}$/.test(this.value) ?
+this.value : this.value.split('.')[1].length==2?
+this.value:this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1].substr(0,2);"></span>
+              <span class="col-40" style="text-align: right;font-size: 14px;color: #505050">元/升</span>
+       </label>
+      <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px;height: 45.6px">
+        <span class="col-25">
+          <span class="input-label" style="width: 100%;text-align: left;font-size: 14px;color: #505050">购油金额：</span></span>
+        <span class="col-33"><input type="text" ng-model="AddOil.Amount" style="padding-right: 0px;font-size: 14px;color: #505050"
+                                    onkeyup="value=value.replace(/[^\d.]/g,'');
+this.value=/^\d+\.?\d{0,1}$/.test(this.value) ?
+this.value : this.value.split('.')[1].length==2?
+this.value:this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1].substr(0,2);"></span>
+        <span class="col-40" style="text-align: right;font-size: 14px;color: #505050">元</span>
+      </label>
+      <span class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px;height: 45.6px">
+        <span class="col-25">
+          <span class="input-label" style="width: 100%;text-align: left;font-size: 14px;color: #505050">总量：</span></span>
+        <span class="col-33">
+          <input type="text" ng-model="AddOil.Total" style="font-size: 14px;color: #505050"
+                 onkeyup="value=value.replace(/[^\d.]/g,'');
+this.value=/^\d+\.?\d{0,1}$/.test(this.value) ?
+this.value : this.value.split('.')[1].length==2?
+this.value:this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1].substr(0,2);"></span>
+        <span class="col-40" style="text-align: right;font-size: 14px;line-height: 31px;color: #505050">
+          升
+          <button class="button button-small button-assertive" ng-click="calculate()"style="font-size: 14px;width: 50px">计算</button>
+        </span>
+      </span>
+      <label class="item item-input row" style="border-left:none;border-right: none;padding-left: 16px;height: 45.6px">
+        <span class="col-20">
+          <span class="input-label" style="width: 100%;text-align: left;font-size: 14px;color: #505050">时间：</span></span>
+        <span class="col-80">
+          <input type="date" ng-change="checkDate()" ng-model="AddOil.AddTime" style="font-size: 14px;color: #505050"></span>
+      </label>
+      <label class="item item-input  item-text-wrap" style="border-left:none;border-right: none;padding-left: 16px;height: 45.6px">
+
+          <span  style="width: 50%;text-align: left;font-size: 14px;color: #505050">当前公里数：</span>
+          <input type="text" ng-model="AddOil.Driver_KM" onkeyup="value=value.replace(/[^\d.]/g,'');
+this.value=/^\d+\.?\d{0,1}$/.test(this.value) ?
+this.value : this.value.split('.')[1].length==2?
+this.value:this.value=this.value.split('.')[0]+'.'+this.value.split('.')[1].substr(0,2);" style="font-size:14px;color:#505050;">
+          <span style="text-align: right;font-size: 14px;color: #505050;padding-right: 16px">KM</span>
+      </label>
+
+      <label class="item item-input " style="border-left:none;border-right: none;padding-left: 16px;height: 45.6px">
+          <span class="input-label" style="width: 10%;text-align: left;font-size: 14px;color: #505050">燃油类型：</span>
+
+          <select ng-model="AddOil.PetrolType">
+            <option value="" style="color: #9e9c9c">请选择</option>
+            <option value="0">0#</option>
+            <option value="92">92#</option>
+            <option value="90">90#</option>
+            <option value="93">93#</option>
+            <option value="95">95#</option>
+            <option value="97">97#</option>
+            <option value="98">98#</option>
+          </select>
+      </label>
+
+      <label class="item item-input" style="border-left:none;border-right: none;padding-left: 16px">
+          <span class="input-label" style="width: 10%;text-align: left;font-size: 14px;color: #505050">车辆：</span>
+          <select ng-model="AddOil.Car" style="float: left" ng-click="changeSelect()">
+            <option value="" hidden>{{DefaultCar.Ex_carType}}</option>
+            <option ng-repeat="x in car" value="{{x}}">{{x.Ex_carType}}</option>
+          </select>
+      </label>
+
+
+      <span class="item item-input" style="font-size: 14px;color: #9e9c9c;padding-left: 16px;border-right: none;border-left: none;border-bottom: none">前后相连两次加油都加油时，统计数据才更准确</span>
+       <br> <center>
+        <span class="text-center buttons">
+          <button class="button button-small" ng-click="addOil()" style="background-color: #1e77c0;color: white;height: 32px;width: 50px"><span style="font-size: 14px">确定</span></button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="button button-small" style="background-color: #1e77c0;color: white;height: 32px;width: 50px"><span style="font-size: 14px">取消</span></button>
+        </span></center>
+    </div>
+  </ion-content>
+</ion-view>

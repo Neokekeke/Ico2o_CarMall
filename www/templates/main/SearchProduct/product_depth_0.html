@@ -1,0 +1,11 @@
+<ion-view title="查找配件" hide-tabs="true">
+  <ion-content>
+    <div ui-view></div>
+
+    <ion-list class="text-left">
+      <div class="item" ng-repeat="list in lists" ng-click="goToPage(list.Depth,list.ID,list.Name)"style="padding-top: 10px;padding-bottom: 10px">
+        <span style="font-size: 14px">{{list.Name}}</span>
+      </div>
+      </ion-list>
+  </ion-content>
+</ion-view>

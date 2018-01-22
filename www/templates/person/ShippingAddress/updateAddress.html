@@ -1,0 +1,42 @@
+<!--更改收货地址-->
+	<ion-modal-view ng-controller="updateReceivingCtrl">
+	<ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">更改收货地址</h1>
+        </ion-header-bar>
+  <ion-content >
+  	<form role="form" name="myForm" class="form-horizontal" novalidate>
+    <div class="list">
+      <label class="item item-input"  style="padding-bottom: 0px;padding-top: 0px;">
+        <span  style="font-size:14px ;width:65px ;">收货人</span>:&nbsp;
+        <input type="text" style="font-size:14px ;max-width: 68%" name="name" ng-model="UpdateReceiving.Name" required>
+      	<i class="ion-checkmark-round" ng-show=" myForm.name.$valid"></i>
+      </label>
+      <label class="item item-input"  style="padding-bottom: 0px;padding-top: 0px;">
+        <span  style="font-size:14px ;width:65px ;">手机号</span>:&nbsp;
+        <input style="font-size:14px ;max-width: 68%" type="tel" name="phone" ng-pattern="/^1[34578]\d{9}$/" ng-model="UpdateReceiving.Mobile" required>
+            <i class="ion-checkmark-round" ng-show=" myForm.phone.$valid"></i>
+      </label>
+      <label class="item item-input"style="padding-bottom: 0px;padding-top: 0px;">
+        <span name="PostCode"  style="font-size:14px ;width:65px ;">邮编</span>:&nbsp;
+        <input type="text" name="PostCode" style="font-size:14px ;max-width: 68%" ng-model="UpdateReceiving.PostCode" ng-pattern="/^\d{6}$/" required>
+      	<i class="ion-checkmark-round" ng-show="myForm.PostCode.$valid"></i>
+      </label>
+      <label class="item item-input"style="padding-bottom: 0px;padding-top: 0px;">
+        <span style="font-size:14px ;width:65px ;" >所在地区</span>:&nbsp;
+        <input style="font-size:14px ;max-width: 68%" type="text" ng-model="UpdateReceiving.PCD" name="PCD" ng-click="showPopup()"  required></input>
+        <i class="ion-checkmark-round"  ng-show=" myForm.PCD.$valid"></i>
+        
+
+      </label>
+      <label class="item item-input"style="padding-bottom: 0px;padding-top: 0px;">
+        <span style="font-size:14px ;width:65px ;">详细地址</span>:&nbsp;
+        <input style="font-size:14px ;max-width: 68%" type="text" name="Address" ng-model="UpdateReceiving.Address" required>
+      	      <i class="ion-checkmark-round" ng-show=" myForm.Address.$valid"></i>
+      </label>
+    </div>
+    <button class="button button-full" style="background-color:#1e77c0;width:100%;line-height: 32px; height: 32px;color: white; border-radius:5px;border: 0px;" ng-disabled="myForm.$invalid" ng-click="updateReceiving()">
+      <span style="font-size:14px ;">保存</span>
+    </button>
+    </form>
+  </ion-content>
+</ion-modal-view >

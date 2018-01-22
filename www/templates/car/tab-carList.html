@@ -1,0 +1,37 @@
+<ion-view title="我的爱车">
+  <ion-content>
+    <div class="input input-inset" ng-repeat="x in cars">
+      <div class="item item-text-wrap item-input" style="padding-top: 7px;border-color:#e1e1e1;padding-bottom: 7px;padding-left: 10px;border: solid 1px;border-color: #e1e1e1">
+        <div class="row" style="padding-top: 0px;padding-bottom: 0px;padding-left: 0px;padding-right: 10px">
+          <div class="col col-33" style="padding-top: 0px;height: 100px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px">
+            <img style="height: 100%;width: 100%" src="img/xts.jpg">
+          </div>
+          <div class="col col-67" style="padding-top: 0px;padding-left: 7px;padding-right: 0px;height: 100px">
+            <div class="row" style="padding-right: 0px;padding-left: 0px;color: #505050;padding-top: 0px;font-size: 14px">
+             {{x.Ex_carType}}
+            </div>
+            <div class="row" style="height: 68px;padding-top: 25px;padding-bottom: 0px;padding-left: 0px;padding-right: 0px">
+              <div class="col" style="padding-top: 15px;padding-left: 0px;padding-right: 5px;padding-bottom: 0px">
+                <button style="background-color: #1e77c0;color: white;border-style: none;border-radius:5px;
+                  width:100%;height:32px;font-size: 14px;;" ng-click="open_carRecord(x)">
+                  爱车档案
+                </button>
+              </div>
+              <div class="col" style="padding-top: 15px;padding-right: 0px;padding-bottom: 0px">
+                <button style="background-color: #fe4600;color: white;border-style: none;border-radius:5px;
+                  width:100%;height:32px;font-size:14px" ng-click="goCarMessage(x)">
+                  详情
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar style="height: 50px;padding-left: 7px;padding-right: 7px;padding-top: 0px">
+    <button class="button button-block button-energized" ui-sref="tab.addMyCar" style="font-size: 14px;height: 32px">
+      添加我的爱车
+    </button>
+  </ion-footer-bar>
+</ion-view>

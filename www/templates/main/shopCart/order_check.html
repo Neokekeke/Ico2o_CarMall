@@ -1,0 +1,124 @@
+<ion-view title="确认订单" hide-tabs="true">
+	<ion-content>
+		<div class="list text-left">
+			<div class="item row" ng-if="addressMessage.Name == null" ng-click="gotoAddress()" style="border-left: none;border-right: none;padding:0;padding-left:10px;height: 44px;line-height: 28px;">
+				<div class="col col-90" style="height: 100%;">
+					<p>请添加收货地址</p>
+				</div>
+				<div class="col col-10" style="height: 100%;">
+					<i class="ion-chevron-right"></i>
+				</div>
+			</div>
+			<div class="item" ng-if="addressMessage.Name != null" ng-click="gotoAddress()">
+				<p>收货人：{{addressMessage.Name}}</p>
+				<p>收货地址：{{addressMessage.Province}},{{addressMessage.City}},{{addressMessage.District}},{{addressMessage.Address}}</p>
+				<p>收货人电话：{{addressMessage.Mobile}}</p>
+			</div>
+			<div class="item item-divider" style="background-color: #ddd;border: none;">
+				<!--柯尊仁修改-->
+				<p style="color: red">{{CarCode.Brand}}&nbsp;&nbsp; {{CarCode.Gearbox}}&nbsp;&nbsp; {{CarCode.Engine}}&nbsp;&nbsp; {{CarCode.Year}}&nbsp;&nbsp; {{CarCode.Configuration}}
+				</p>
+			</div>
+			<!--			<div class="item item-button-right">
+				<p>共
+					<a style="color: red">{{ShopCarCount}}</a> 件</p>
+				<button class="button button-clear">
+          <i class="ion-chevron-right"></i>
+        </button>
+
+			</div>-->
+
+			<!--
+      	作者：黄铭标
+      	时间：2016-10-14
+      	描述：配送，支付，钉箱 用弹出框形式
+      -->
+			<!--			<div class="item row" ng-click="showPopup_wuliu()" style="height: 44px;padding:0;padding-top: 5px;padding-left:10px;border-left: none;border-right: none;">
+				<div class="col col-30">
+					<p>配送方式 ：</p>
+				</div>
+				<div class="col col-60 text-center" ng-if="logistics.isChecked">
+					<p>{{logistics.name}}</p>
+				</div>
+				<div class="col col-10">
+					<i class="ion-chevron-right"></i>
+				</div>
+			</div>-->
+
+			<div class="item row orderItem">
+				<div style="padding-top: 15px;" class="col col-30">
+					<p>支付方式 ：</p>
+				</div>
+				<ion-checkbox class='orderCheckBox' ng-checked="true" disabled="true">
+					微信支付
+				</ion-checkbox>
+			</div>
+			<!--
+	作者：黄
+	时间：2016-12-05
+	描述：修改钉箱费和发票信息的用户交互
+-->
+			<div class="item row orderItem" ng-click="showPopup_bingBox()">
+				<div class="col col-90">
+					<p>是否选择钉箱(需要添加额外的费用)</p>
+				</div>
+				<div class="col col-10">
+					<i class=" ion-chevron-right"></i>
+					<!--<p ng-if="!isBingBox"><i class="ion-chevron-right"></i></p>
+					<p ng-if="isBingBox">已选择</p>-->
+				</div>
+			</div>
+			<div class="item" ng-if="isBingBox" style="padding-left: 40px;padding-top: 0;padding-bottom: 0;">
+				<div class="fontS" style="height: 32px;line-height: 32px;border: none;" ng-repeat="boxname in boxName">{{boxname}}<span style="color: red;">(已选钉箱)</span></div>
+			</div>
+			<div class="row" style="background-color: #ddd;border: none;height: 10px;">
+			</div>
+			<div class="item row orderItem" ng-click="openModal()">
+
+				<div class="col col-90">
+					<p>发票信息{{" "+invoiceStrss}}</p>
+				</div>
+				<div class="col col-10">
+					<i class="ion-chevron-right"></i>
+
+				</div>
+			</div>
+			<!--			<div class="item row" style="border-left: none;border-right: none;height: 44px;line-height: 44px;padding-left: 15px;">
+				<p style="font-size: 14px;font-family:'微软雅黑';">使用优惠券</p>
+			</div>-->
+
+			<div class="item">
+				<textarea placeholder="订单备注信息（20字内）" ng-model="invoiceText.str" rows="2" maxlength="48" style="font-size: 14px;font-family:'微软雅黑';resize:none;word-break: normal ; width: 100%;"></textarea>
+			</div>
+
+			<div class="item">
+				<!--柯尊仁修改-->
+				<!--
+                	作者：黄
+                	时间：2016-12-05
+                	描述：页面中“赠送积分”不要，钉箱费和发票信息交互修改
+                -->
+				<p>运费：
+					<!--<span style="font-size: 14px;font-family:'微软雅黑';color:red" ng-if="!logistics.name">￥ 0</span>-->
+					<span style="color:red">{{Get.feight | currency:"￥"}}</span>
+				</p>
+				<p>合计：<span style="color:red">&nbsp;{{totalPrice+Get.feight+BingBoxTotalCost | currency:"￥"}}</span></p>
+				<p>钉箱费：
+					<!--        <span style="color:red" ng-if="!BingBoxTotalCost">￥ 0</span>-->
+					<span style="color:red">{{BingBoxTotalCost | currency:"￥"}}</span>
+				</p>
+				<p>商品总价：<span style="color:red">{{totalPrice | currency:"￥"}}</span></p>
+
+				<!--<p style="font-size: 14px;font-family:'微软雅黑';">赠送积分：<span style="color:red">&nbsp;{{totalPrice+Get.feight+BingBoxTotalCost}}</span>分</p>-->
+				<p>共<span style="color:red;">{{ShopCarCount }}</span>件商品，总重
+					<a style="color:red;">{{totalWeight | number}}</a>kg
+				</p>
+			</div>
+		</div>
+		<div style="margin-left: 4px; margin-right: 4px; margin-top: 0px;padding-left: 10px;padding-right: 10px;">
+			<button style="border-radius: 5px;" class="button button-assertive button-small button-full" ng-click="submit_Order()">
+      <strong style="font-size: 16px;font-family:'微软雅黑';">提交订单</strong>
+    </button>
+		</div>
+	</ion-content>
+</ion-view>

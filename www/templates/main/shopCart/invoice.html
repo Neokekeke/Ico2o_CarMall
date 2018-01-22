@@ -1,0 +1,45 @@
+<ion-modal-view ng-controller="invoiceCtrl">
+	<ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">发票信息</h1>
+        </ion-header-bar>
+  <ion-content>
+            </ion-item> 
+    <ion-list>
+      <form class="form-horizontal showcase-form " role="form" name="invoiceform" novalidate="">
+      <div class="item row form-group ">
+        <span class="input-label col">是否需要发票：</span>
+        <div class="col input-label">
+          是<input type="radio" name="need" ng-value="true" ng-model="form.need" >
+          否<input  type="radio" name="need" ng-value="false" ng-model="form.need">
+        </div>
+      </div>
+      <div class="item row form-group">
+        <span class="input-label col">发票类型：</span>
+        <div class="col">
+          个人<input type="radio" name="Itype" ng-model="form.Itype" ng-value="true"  ng-disabled="form.need == false" >
+          单位<input type="radio" name="Itype" ng-model="form.Itype" ng-value="false"  ng-disabled="form.need == false" >
+        </div>
+      </div>
+      <label class="item item-input form-group">
+        <span class="input-label">发票抬头：</span>
+        <input type="text" class="form-control" ng-disabled="!form.need" ng-model="form.invoiceHeader" name="invoiceHeader" required="" >
+      </label>
+      <label class="item item-input form-group" >
+        <span class="input-label">税号：</span>
+        <input type="text" ng-disabled="!form.need||form.Itype" ng-model="form.invoiceNumber"  name="invoiceNumber" required="">
+        <!--<input type="text" ng-if="!(form.need && !form.Itype)" ng-disabled="!form.need||form.Itype" required="" value=""/>-->
+      </label>
+      <label class="item item-input form-group">
+        <span class="input-label">地址：</span>
+        <input type="text" ng-disabled="!form.need||form.Itype" ng-model="form.invoiceAddress"  name="invoiceAddress" required="">
+      </label>
+        <div class="form-group">
+        <button ng-click="submitInvoice()" class="button button-small button-positive button-block"
+                ng-disabled="!(form.need== false||form.need == true && ((form.Itype == true && invoiceform.invoiceHeader.$valid)||(form.Itype == false &&invoiceform.invoiceNumber.$valid&&invoiceform.invoiceAddress.$valid )))">
+          提交
+        </button>
+        </div>
+      </form>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>

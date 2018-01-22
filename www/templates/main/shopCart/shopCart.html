@@ -1,0 +1,88 @@
+<ion-view title="购物车" hide-tabs="true" style="padding-left: 10px;padding-right:10px;">
+	<ion-content class='has-footer'>
+		<ion-list>
+			<div class="item item-text-wrap" ng-repeat="shopitem in shopList" style="padding: 5px 5px 5px 10px;">
+
+				<div class="row" style="padding:0">
+					<div class="col col-25 " style="padding:0px">
+						<img src="{{host_ico2o}}{{shopitem.ImagePath}}" style="width: 90px;height: 90px;padding-top:5px">
+					</div>
+
+						<div class="col col-50 " style="margin-left:1%;padding:0px;">
+							<div class="row">
+								<span style="font-size: 14px;font-family: '微软雅黑';text-align: left;">{{shopitem.Name}}</span>
+							</div>
+						
+							<div class="row" style="padding-top:5px">
+								<!--
+                                	作者：黄
+                                	时间：2016-11-16
+                                	描述：修改发货地址
+                                -->
+								<span style="font-size: 14px;font-family: '微软雅黑';">发货地：</span>
+								<select ng-model="select.address[$index]" ng-change="setAreas(shopitem.ID,select.address[$index])" ng-options="o for o in addressList[$index].Areas" style="border-radius: 5px; height: 20px;font-size: 12px;font-family: '微软雅黑';">
+									<option value="">{{shopitem.Areas}}</option>
+								</select>
+<!--								<select style="border-radius: 5px; height: 20px;font-size: 12px;font-family: '微软雅黑';">
+									<option value="shopitem.Areas">{{shopitem.Areas}}</option>
+								</select>-->
+							</div>
+						
+							<div class="row" style="padding-top:5px">
+								<!--<span><s>￥:{{shopitem.MarketPrice}}.0</s>￥:{{shopitem.ShopPrice}}.0</span>-->
+								<span style="font-size: 14px;font-family: '微软雅黑';">价格:{{shopitem.Price | currency:"￥"}}</span>
+							</div>
+						
+							<div class="row" style="font-size: 14px;font-family: '微软雅黑';padding-bottom:0px">
+								<div style="margin-top: 3%;">数量：</div>
+								<a style="width: 30px;height: 30px;min-width: 10px;line-height: 30px;" ng-click="decrementQuantity($index)">
+									<i class="ion-minus-circled" style="font-size: 20px;"></i>
+								</a>
+								<div style="margin:3% 3% 3% 3%;">{{shopitem.Quantity}}</div>
+								<a style="width: 30px;height: 30px;min-width: 10px;line-height: 30px;" ng-click="incrementQuantity($index)">
+									<i class="ion-plus-circled" style="font-size: 20px;"></i>
+								</a>
+							</div>
+						</div>
+						<div class="col col-25">
+									<ion-checkbox class="changeCheckbox" style="border-style: none ;margin:3% 3%;" ng-checked="checkBoxChecked[$index]" ng-click="setBoxChecked($index)">
+									</ion-checkbox>
+									<button class="button button-small row-center" ng-click="deleteCart(shopitem.ID,$index)" style=" height: 32px; width: 30px;margin:auto;background-color: #D1D3D6;">
+								                 <i class="ion-ios-trash-outline" style="height: 20px;width: 20px;color:#444444;"></i>
+								    </button>
+						</div>
+
+				</div>
+
+			</div>
+
+		</ion-list>
+		<ion-infinite-scroll ng-if="hasmore" on-infinite="loadMoreList()" distance="10%" immediate-check="false">
+		</ion-infinite-scroll>
+	</ion-content>
+	<footer class="bar bar-footer" style="background-color: #2076c0;">
+		<div class=" row" style="padding:0">
+				<div class="col col-30 col-center text-center">
+					<a ng-click="checkAllshopcar()" ng-model="selectAll" ng-checked="setBoxCheckedInQX" >
+					<span style="color: white; font-size: 14px;font-family: '微软雅黑';line-height: 20px;" ng-if="selectAll"><i class="ion-ios-checkmark-outline" style="font-size:20px;margin-right: 5px;"></i>取消</span>
+					<span style="color: white; font-size: 14px;font-family: '微软雅黑';line-height: 20px;" ng-if="!selectAll"><i class="ion-ios-circle-outline" style="font-size:20px;margin-right: 5px;"></i>全选</span>
+					</a>
+				</div>
+				<div class="col col-10 col-center text-center" >
+					<a  ng-click="deleteCartList()" style="display: inline-block; width: 25px;height: 25px;background-color: #2076c0;color: white;border: 1px solid white;  border-radius: 5px;">
+						        			 <i style="margin: 0;font-size: 20px; line-height: 25px;" class="ion-ios-trash-outline"></i>
+						 </a>
+				</div>
+		
+				<div class="col col-40 col-center text-center" style="text-align: left; color: white; margin-left: 10px;">
+					<strong class="col-center">总价：<a class="bar-assertive" style="color: white;font-size: 14px;font-family: '微软雅黑';">{{totalPrice}}元</a></strong>
+				</div>
+				
+				
+					<button style="height: 25px;width:60px;min-height: 28px;line-height: 28px;margin-top:4px;margin-right: 5px;" class="button button-assertive pull-right" ng-click="open_orderCheck()">
+			        <span style="font-size: 14px;font-family: '微软雅黑';">结算</span>
+			      </button>
+		      
+		</div>
+	</footer>
+</ion-view>

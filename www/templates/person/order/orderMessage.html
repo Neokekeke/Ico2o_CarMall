@@ -1,0 +1,77 @@
+<ion-view title="商品详情" hide-tabs="true">
+	<ion-content>
+		<ion-list>
+			<ion-item>
+
+				<div class="row">
+					<div class="col">
+						<ion-slide-box on-slide-changed="change($index)" active-slide="myActiveSlide" auto-play="true" does-continue="true" slide-interval=1000 show-pager="true">
+							<ion-slide>
+								<img src="{{host_ico2o}}{{itemDetail.ImagePath}}" style="width: 300px;height: 200px">
+							</ion-slide>
+
+							<ion-slide on-slide-changed="change($index)">
+								<img src="{{host_ico2o}}{{image[0].FilePath}}" style="width: 300px;height: 200px">
+							</ion-slide>
+
+							<ion-slide on-slide-changed="change($index)">
+								<img src="{{host_ico2o}}{{image[1].FilePath}}" style="width: 300px;height: 200px">
+							</ion-slide>
+
+							<ion-slide on-slide-changed="change($index)">
+								<img src="{{host_ico2o}}{{image[2].FilePath}}" style="width: 300px;height: 200px">
+							</ion-slide>
+						</ion-slide-box>
+					</div>
+				</div>
+
+				<div style="padding-top: 5px">
+						<span style="line-height: 36px">{{itemDetail.BrandName+"/"}}{{itemDetail.CategoryName+"/"}}{{itemDetail.ProName}}</span>
+
+						<button class="button" ng-click="collect(itemDetail.ID)"
+                    style="
+                    width: 100px;
+                    height: 35px;
+                    line-height: 28px;
+                    float: right;
+                    background-color: #2076c0;">
+			             <div  ng-if="Collection" style="font-size: 16px; color: white;">
+				            				<i class="ion-android-star-outline" >点击收藏</i>
+			            	</div>
+			            	<div ng-if="!Collection" style="font-size: 16px; color: white;">
+				            				<i class="ion-star">取消收藏</i>
+				           </div>
+            </button>
+				</div><hr style="margin-top: 15px;width: 100%;padding: 0px">
+
+					<div class="col">
+							<div class="row">
+								{{"配件编码："+itemDetail.ProNO}}
+							</div>
+							<div class="row">
+								{{"库存："+itemDetail.Inventory}}
+							</div>
+							<div class="row">
+								{{"￥："+itemDetail.ShopPrice}}
+							</div>
+							<div class="row">
+								产品概况
+							</div>
+							<div class="list">
+								<span><img src="{{host_ico2o}}{{itemDetail.ImagePath}}" style="width: 300px;height: 200px;margin: auto"> </span>
+							</div>
+					</div>
+				</div>
+
+			</ion-item>
+		</ion-list>
+		<div class="row">
+			<a class="button  button-assertive" style="margin: auto;width: 45%" ng-click="addToShopcart(itemDetail.ID,itemDetail.ProCount)">
+       			<span>加入购物车</span>
+      		</a>
+			<a class="button  button-positive" style="margin: auto;width: 45%" ng-click="goToPay()">
+		        <span>立即购买</span>
+		    </a>
+		</div>
+	</ion-content>
+</ion-view>

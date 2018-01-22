@@ -1,0 +1,54 @@
+<!--收货地址-->
+<ion-view title="收货地址" hide-tabs="true">
+	<ion-nav-buttons side="right" style="color: #505050;">
+		<!--
+        	作者：黄铭标
+        	时间：2016-10-13
+        	描述：修改跳转状态
+        -->
+        <!--
+        	作者：黄铭标
+        	时间：2016-11-21
+        	描述：修改打开方式
+        -->
+		<a  ng-click="openModal_AddArea()" style="text-decoration:none;font-size:17px;color: white;margin-top:5px"> 添加地址 </a>
+		<!--<a ng-if="flag_address == 1" ng-href="#/tab/addAddress2" style="text-decoration:none;font-size:17px;color: white;margin-top:5px"> 添加地址 </a>-->
+	</ion-nav-buttons>
+	<ion-content class="has-header ">
+		<ion-refresher on-refresh="dorefresh()"></ion-refresher>
+		<div class="item" ng-repeat="gml in getReceiving_mList" style="padding-left: 10px;padding-right:10px;height: 140px;border-top: none;border-left: none;border-right: none;border-bottom: 7px #CCCCCC solid;">
+			<!--style="border-bottom: 5px #e1e1e1 solid;padding-bottom: 5px;"-->
+			<ul>
+				<li style="padding-left: 16px;">
+					<div style="font-size: 14px;color: #505050;float:left">{{gml.Name}}</div>
+					<div style="margin-right: 16px;font-size: 14px;color: #505050;float:right">手机号码：{{gml.Mobile}}</div>
+
+				</li>
+				<br />
+				<li style="padding-left: 16px;margin-top: 10px;">
+					<span style="float: left;font-size: 14px;color: #505050;">{{gml.Province}},{{gml.City}},{{gml.District}},{{gml.Address}}</span>
+					<br />
+				</li>
+				<hr style="width: 100%;border-top:1px dashed #e1e1e1;">
+				<li>
+
+					<div class="row" style="padding-right:11px;text-align: left;float: left;margin-top: -5px;">
+						<label class="col col-40" style="padding-left:27px;margin-left: -4%;margin-top: 5px;">
+							<input type="radio" style="font-size: 14px;border: none;" name="addGroup" ng-checked="isDefaultList[$index]" ng-click="setChecked(gml.ID,$index)">
+								选择收货地址
+							</input>
+						</label>
+						<div class="col col-30" style="text-align:right;margin-left: 13%;float: right;font-size: 16px;color: #505050;">
+							<a style="text-align:center;font-size: 14px;color: #505050;cursor:pointer;height: 17px;padding-top: 4px; display: inline-block;
+								background-color: #1e77c0;height: 32px;width:60px; color: white; border-radius:5px" ng-click="deleteChecked(gml.ID)">删除</a>
+							<a style="text-align: center;margin-left: 15px;text-decoration:none;font-size: 14px;color: #505050;height: 17px;padding-top: 4px;
+								 display: inline-block;background-color: #fe4600;height: 32px;width:60px; color: white; border-radius:5px" ng-click="openModal_updateAddress(gml)"><span>修改</span></a>
+							<!--<a style="text-align: center;margin-left: 15px;text-decoration:none;font-size: 14px;color: #505050;height: 17px;padding-top: 4px; display: inline-block;background-color: #fe4600;height: 32px;width:60px; color: white; border-radius:5px" ng-if="flag_address == 1" ng-href="#tab/updateAddress2?gml={{gml}}"><span>修改</span></a>-->
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,27 @@
+<ion-view title="添加我的爱车" hide-tabs="true">
+  <ion-content>
+    <div style="padding-left: 10px;padding-right: 10px">
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">车架号:&nbsp;&nbsp;&nbsp;
+        <input type="text" style="font-size: 14px" placeholder="为了找到所需配件，请输入17位车号" ng-model="AddCars.Horse">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">上牌日期:&nbsp;&nbsp;&nbsp;
+        <input type="date" style="font-size: 14px" ng-model="AddCars.LicenseDate">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">当前公里数:&nbsp;&nbsp;&nbsp;
+        <input type="number" style="font-size: 14px" ng-model="AddCars.Drive_KM">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">上次保养日期:&nbsp;&nbsp;&nbsp;
+        <input type="date" style="font-size: 14px" ng-model="AddCars.LastMaintenanceDate">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">上次保养公里数:&nbsp;&nbsp;&nbsp;
+        <input type="number" style="font-size: 14px" ng-model="AddCars.LastMaintenance_KM">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">发动机后六位:&nbsp;&nbsp;&nbsp;
+        <input type="text" style="font-size: 14px" ng-model="AddCars.Motor_LastSixNumber">
+      </label>
+      <button class="button button-small button-block button-energized" style="padding-right: 10px;padding-left: 10px" ng-click="submit()">提交
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

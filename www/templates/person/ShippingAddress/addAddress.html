@@ -1,0 +1,43 @@
+<!--添加收货地址-->
+		<ion-modal-view ng-controller="addAddressCtrl">
+	<ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">添加收货地址</h1>
+        </ion-header-bar>
+	<ion-content overflow-scroll="true" style="overflow: hidden;">
+		<form role="form" name="myForm" id="myForm" class="form-horizontal" novalidate>
+		<div class="list">
+			<label class="item item-input" style="border-left: none;border-right: none;border-top: none;">
+        		<span class="input-label" style="text-align: left;font-size:14px ;font-family:'微软雅黑';width:65px ;">收货人</span>:&nbsp;
+        		<input style="font-size:14px ;font-family:'微软雅黑';max-width: 68%;" type="text" name="name" ng-model="addReceiving.Name" required>
+        		<i class="ion-checkmark-round" ng-show="myForm.name.$dirty && myForm.name.$valid"></i>
+      		</label>
+			<label class="item item-input" style="border-left: none;border-right: none;">
+        <span class="input-label" style="text-align: left;font-size:14px ;font-family:'微软雅黑';width:65px ;">手机号</span>:&nbsp;
+        <input type="tel" style="font-size:14px ;max-width: 68%;" ng-model="addReceiving.Mobile" name="phone" ng-pattern="/^1[34578]\d{9}$/" required>
+      <i class="ion-checkmark-round" ng-show="myForm.phone.$dirty && myForm.phone.$valid"></i>
+			</label>
+			<label class="item item-input" style="border-left: none;border-right: none;">
+        <span class="input-label" style="text-align: left;font-size:14px ;font-family:'微软雅黑';width:65px ;">邮编</span>:&nbsp;
+        <input style="font-size:14px ;font-family:'微软雅黑';max-width: 68%;" type="text" name="PostCode" ng-model="addReceiving.PostCode" ng-pattern="/^\d{6}$/" required>
+        <i class="ion-checkmark-round" ng-show="myForm.PostCode.$dirty && myForm.PostCode.$valid"></i>
+      </label>
+			<label class="item item-input" style="border-left: none;border-right: none;">
+        <!--<span class="input-label">所在地区：</span>-->
+        <span class="input-label" style="text-align: left;font-size:14px ;font-family:'微软雅黑';width:65px ;">所在地区</span>:&nbsp;
+        <input type="text" style="font-size:14px ;font-family:'微软雅黑';max-width: 68%;" name="PCD" ng-click="showPopup()" ng-model="addReceiving.PCD" readonly="readonly" required></input>
+      <i class="ion-checkmark-round" ng-show=" myForm.PCD.$valid"></i>
+			</label>
+			<label class="item item-input" style="border-left: none;border-right: none;">
+        <span class="input-label" style="text-align: left;font-size:14px ;font-family:'微软雅黑';width:65px ;">详细地址</span>:&nbsp;
+        <!--<input type="text" style="font-size:14px ;font-family:'微软雅黑';max-width: 68%;" name="Address" ng-model="addReceiving.Address" required>-->
+        	<textarea style="padding-top: 10px;font-size:14px ;font-family:'微软雅黑';resize: none;height: 34px;width:68%;overflow-y: hidden;" form="myForm" rows="2" cols="12" wrap="hard" name="Address" ng-model="addReceiving.Address" required></textarea>
+        <i class="ion-checkmark-round" ng-show="myForm.Address.$dirty && myForm.Address.$valid"></i>
+      </label>
+		</div>
+		<button type="submit" class="button" style="width: 100%;height: 35px;background-color:#1e77c0;line-height: 35px;color: white; border-radius:5px;" ng-click="submit_address(!myForm.$invalid)">
+      <span ng-if="!myForm.$invalid" style="font-size:16px ;font-family:'微软雅黑';">确定</span>
+      <span ng-if="myForm.$invalid" style="font-size:16px ;font-family:'微软雅黑';">取消</span>
+    </button>
+   </form>
+	</ion-content>
+</ion-modal-view>

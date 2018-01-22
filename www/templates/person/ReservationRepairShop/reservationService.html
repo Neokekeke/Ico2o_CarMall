@@ -1,0 +1,88 @@
+<ion-view title="预约维修" hide-tabs="true" xmlns="http://www.w3.org/1999/html">
+  <ion-nav-buttons side="right">
+    	<button class="button button-clear button-small" style="width: 50px;height: 50px" ng-click="resetBooking()">
+      <span style="color: white">重置</span></button>
+  	</ion-nav-buttons>
+  <ion-content>
+    <!--第一板块-->
+    <div style="padding-left: 10px;padding-right: 10px">
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">车牌号:&nbsp;&nbsp;&nbsp;
+        <input type="text" style="font-size: 14px" ng-model="AddBooking.CarNO">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">到店日期:&nbsp;&nbsp;&nbsp;
+        <input type="date" style="font-size: 14px" ng-model="AddBooking.BookingDate">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">联系人:&nbsp;&nbsp;&nbsp;
+        <input type="text" style="font-size: 14px" ng-model="AddBooking.ContactPerson">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-left: none;border-right: none">手机号码:&nbsp;&nbsp;&nbsp;
+        <input type="number" style="font-size: 14px" ng-model="AddBooking.Mobile">
+      </label>
+      <label class="item item-input" style="font-size: 14px;border-bottom: none;border-left: none;border-right: none">选择车辆:&nbsp;&nbsp;&nbsp;
+        <div style="padding-top: 7px;padding-bottom: 7px">
+        <select ng-model="AddBooking.CarNO" style="border: none">
+          <option value="">请选择</option>
+          <option ng-repeat="x in Car" ng-value="x.ID">{{x.Ex_carType}}</option>
+        </select></div>
+      </label>
+    </div>
+
+    <div style="border: solid 1px;border-color: transparent"></div>
+    <div style="border: solid 1px;border-color: rgba(0, 0, 0, 0.34)"></div>
+    <div  style="border-top: solid 7px;border-color: #cccccc;"></div>
+    <div style="border: solid 1px;border-color: transparent"></div>
+    <div class="list" style="padding-right: 10px;padding-left: 10px;">
+
+      <div class="item" style="height: 46px;border-top:none;border-left:none;border-right: none;padding: 0px;padding-left: 16px;padding-right: 16px;">
+        <a class="button button-small button-full button-clear" style="font-size: 14px;padding-left: 0px" ng-click="goRepair_order()"><span
+          style="color: black;float: left;">对应订单</span>
+          <span style="color: black;float: right">&gt;</span></a>
+      </div>
+      <div class="item" style="border-left:none;border-right: none;text-align: left;padding-top: 10px;padding-bottom: 10px;padding-right: 16px;padding-left: 16px">
+        <div ng-repeat="item in order_select">
+          <button class="button button-small button-order" style="padding-left:0px;font-size: 14px;color: #8f8f8f;">订单号: {{item.OrderNO}}</button>
+          <button class="button button-small button-clear" style="padding-left:0px;text-align: center;font-size: 14px;color: orange;" ng-click="goOrderlist(item)">
+           订单详情</button>
+        </div>
+      </div>
+      <div class="item" style="height: 46px;border-left:none;border-right: none;padding: 0px;padding-left: 16px;padding-right: 16px;">
+        <a class="button button-small button-full button-clear" style="font-size: 14px;padding-left: 0px" ng-click="backRShop()"><span
+          style="color: black;float: left">选择维修店</span>
+          <span style="color: black;float: right">&gt;</span></a>
+      </div>
+      <div class="item" style="border-left:none;border-right: none;padding-top: 10px;padding-bottom: 10px;padding-right: 16px;padding-left: 16px;
+        text-align: left">
+        <span style="font-size: 14px;color: #8f8f8f">{{Maintenance.Address}}</span>
+      </div>
+      <div class="item" style="height: 46px;border-left:none;border-right: none;padding: 0px;padding-left: 16px;padding-right: 16px;">
+        <a style="font-size: 14px;padding-left: 0px" class="button button-small button-full button-clear" ng-click="goMaintenanceItem(Maintenance.ID)"><span
+          style="color: black;float: left">选择维修项目</span>
+          <span style="color: black;float: right">&gt;</span></a>
+      </div>
+      <!--分成2列，每列对行进行ng-repeat，获取数组是原数组的一半，单数角标为一列，双数角标为另一列-->
+      <div class="item row" style="font-size: 14px;border-right:none;border-left:none;padding-top: 0px;padding-bottom: 0px;padding-right: 6px;padding-left:6px">
+        <div class="col">
+          <div class="row" style="padding-bottom: 7px" ng-repeat="item in left_item_select">
+            <span style="color: #8f8f8f">{{item.MaintenanceItemName}}</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row" style="padding-bottom: 7px" ng-repeat="item in right_item_select">
+            <span style="color: #8f8f8f">{{item.MaintenanceItemName}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="item" style="height: 46px;border-left:none;border-right: none;padding: 0px;padding-left: 16px;padding-right: 16px;">
+        <a style="font-size: 14px;padding-left: 0px" class="button button-small button-full button-clear"><span
+          style="color: black;float: left">故障描述：</span></a>
+      </div>
+      <div class="item" style="font-size: 14px;border-left:none;border-right: none;height: 50px;padding: 0px;padding-left: 16px;padding-right: 16px;">
+        <textarea placeholder="最多输入500个字" maxlength="500" ng-model="AddBooking.Description" style="height: 100%;width: 100%;font-size: 100%"></textarea>
+      </div>
+      <div class="item" style="border-left:none;border-right: none;height:50px;padding: 0px;padding-bottom: 8px;padding-top: 8px">
+        <button class="button button-small button-energized" style="font-size: 14px;height:100%;width:100%" ng-click="addBooking()">确定
+        </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

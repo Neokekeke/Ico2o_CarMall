@@ -1,0 +1,111 @@
+<ion-view title="待自提" hide-tabs="true">
+
+  <div class="bar bar-subheader" style="border-bottom:solid 1px #ddd">
+    <div class="row" style="padding:0">
+      <div class="col " style="border-right: solid gainsboro 1px;">
+        <a class="a" ng-href="#/tab/my_Order">全部</a>
+      </div>
+      <div class="col " style="border-right: solid gainsboro 1px">
+        <a class="a" ng-href="#/tab/needToPay">待付款</a>
+      </div>
+      <div class="col ">
+        <a class="a" ng-href="#/tab/sendProduct">已发货</a>
+      </div>
+      <div class="col " style="border-right: solid gainsboro 1px;">
+        <a class="a" ng-href="#/tab/needToCarry" style="font-size: 17px; color: #FF3B30;">待自提</a>
+      </div>
+      <div class="col " >
+      <a class="a" ng-href="#/tab/getProduct">已收货</a>
+     </div>
+    </div>
+  </div>
+
+  <ion-content class="has-subheader">
+      <div class="list">
+
+			<!--我的订单-->
+
+			<div class="input input-inset">
+				<div ng-repeat="orderItem in orderList" ng-init="outerIndex = $index">
+
+					<!--订单号-->
+					 <a  ng-href="#/tab/orderlist/{{orderItem.OrderNO}}" style="text-decoration: none;">
+					<div class="item item-input-wrapper" style="padding: 3px;">
+						<div class="col col-80 text-left">
+							订单号：{{orderItem.OrderNO}}
+						</div>
+
+             <div class="col-20">
+               	<i class="ion-chevron-right"></i>
+            </div>
+            
+            
+					</div>
+				 </a>
+          <!--商品详细信息-->
+          <div ng-repeat="orderitem in orderItem.ListOrdersItem " ng-init="innerIndex = $index">
+            <div class="item item-text-wrap">
+              <div class="row">
+                <div class="col col-40">
+                  <img src="{{host_ico2o}}{{orderitem.ImagePath}}" style="width: 100px;height:100px">
+                </div>
+
+                <div class="col col-60">
+                  <div class="row">
+                    <span>{{orderitem.Name}}</span><br>
+                  </div>
+                  <div class="row">
+                    <span>属性：白色</span>
+                  </div>
+                  <div class="row">
+                    <span>{{"￥:  "+orderitem.Price+""+"  元"}}</span><br>
+                  </div>
+                  <div class="row">
+                    <span>数量：{{orderitem.Quantity}} 个</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="item" style="border-style: none">
+              <span style="float: right">
+                  <span>共{{proSum[$index]}}件产品</span>&nbsp;&nbsp;
+                  <span>合计￥{{priSum[$index]}}</span>&nbsp;&nbsp;
+                  <span>(含运费￥:0.0)</span>
+                </span>
+          </div>
+					<!-- &lt;!&ndash;商品结算栏&ndash;&gt;
+                     <div class="item">
+                     <div class="row">
+                       <span>共：{{Sum($index)}} 件商品</span>
+                       {{"合计:￥ "+TotalSum+" "}}{{" (含运费:￥ 0.0)"}}
+                     </div>
+                     </div>-->
+
+					<!--用户操作按钮-->
+					<div class="item">
+
+            <span style="float: right">
+
+								<a class="button button-small" ng-if="orderItem.Status != 'HasOrder'" ng-href="#/tab/Maintenance" style="background-color: #ef473a; color: white;height: 32px">预约维修店</a>
+								<a class="button button-small" ng-if="orderItem.isShowDK" style="background-color: #ef473a; color: white;height: 32px">查看物流</a>
+								<a class="button button-assertive button-small" ng-if="orderItem.isShowReturnGoodsBtn" ng-href="#/tab/returnGoods/{{orderItem.OrderNO}}" style="background-color: #ef473a; color: white;height: 32px">退货</a>
+
+            </span>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+    <ion-infinite-scroll
+      ng-if="hasmore"
+      on-infinite="loadMore1()"
+      distance="5%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

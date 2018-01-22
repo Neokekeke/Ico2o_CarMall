@@ -1,0 +1,110 @@
+<ion-view title="爱车档案" hide-tabs="true">
+  <ion-content>
+    <div class="content ionic-pseudo">
+
+      <div class="list">
+
+        <div class="item" style="color: white;background-color:#1E90FF;font-size:14px;padding: 0px;height: 32px">
+          <span style="padding-top: 5px">常规保养</span>
+        </div>
+        <div class="item" style="font-size:x-small;padding: 0px">
+          上次行驶公里数 {{car.Drive_KM}}公里 &nbsp;&nbsp;&nbsp;&nbsp;
+          上次保养日期 {{car.ProDate}}
+          <button class="button button-small button-energized">
+            查看
+          </button>
+        </div>
+
+        <div class="item bar" style="color: white;background-color:#1E90FF;font-size:14px;padding: 0px;height: 32px">
+          维修记录
+        </div>
+        <div class="item" style="padding: 0px">
+          <label style="font-size:x-small">时间范围:<input style="font-size:xx-small;max-width: 30%"
+                                                       placeholder="选择开始时间"></label>
+          <label style="font-size:x-small">至：<input style="font-size:x-small;max-width: 30%"
+                                                    placeholder="选择结束时间"></label>
+          <button class="button button-small button-energized">
+            查看
+          </button>
+        </div>
+        <div class="item bar" style="color: white;background-color:#1E90FF;font-size:14px;padding: 0px;height: 32px">
+          爱车估值
+        </div>
+        <div class="item" style="padding: 0px">
+        	<!--
+            	作者：黄铭标
+            	时间：2016-10-17
+            	描述：测试时修改为内网
+           -->
+          <iframe style="width:360px;height:405px"
+                  src="http://www.ico2o.cn/ASHX/MobileAPI/MyCars/CarValue.html">
+          </iframe>
+        </div>
+        <div class="item bar bar-dark" style="color: red;padding: 0px">
+          油耗
+        </div>
+        <div class="item content" style="padding: 0px">
+          <div class="row">
+            <div class="col">
+              <div class="col-demo">百公里油耗：</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">每公里油费：</div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col-demo">每天油费：</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">每月油费：</div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col-demo">每天行驶：</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">总共油耗</div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col-demo">总里程</div>
+            </div>
+            <div class="col">
+              <div class="col-demo"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item bar bar-dark" style="padding: 0px">
+          <div class="row">
+            <div class="col">
+              <div class="col-demo">日期</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">.col</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">.col</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">.col</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">.col</div>
+            </div>
+            <div class="col">
+              <div class="col-demo">.col</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

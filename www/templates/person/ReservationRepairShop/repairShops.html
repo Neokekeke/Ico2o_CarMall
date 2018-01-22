@@ -1,0 +1,46 @@
+<ion-view title="选择维修店" hide-tabs="true">
+	<ion-nav-buttons side="right">
+		<a ng-href="#/tab/shopCart"> 地图 </a>
+	</ion-nav-buttons>
+	<ion-content><br><br>
+		<div class="input input-inset" ng-repeat="x in repairShop">
+			<div class="item item-text-wrap">
+				<div class="row">
+					<div class="col col-offset-90">
+						<p style="font-size:smaller;">{{x.Star}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<p style="font-size:larger">{{x.Garage}}</p>
+				</div>
+				<div class="row">
+					<div class="col col-33">
+						<img src="img/a6l.jpg">
+					</div>
+					<div class="col">
+						<div class="row">
+							<p style="font-size:smaller;color: #9e9e9e">{{x.Address}}</p>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col col-67">
+								<p style="font-size:smaller;color:#9e9e9e">{{x.Distance}}KM</p>
+							</div>
+							<div class="col col-67">
+								<button class="button button-small button-calm" ng-click="openModal_yuyueweixiu(x)">预约</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col col-60">
+						<p style="font-size: smaller">项目：小保养,换雨刷</p>
+					</div>
+					<div class="col col-50"><span style="font-size: smaller">工时费:</span><span style="color: red">￥205</span></div>
+				</div>
+
+			</div>
+		</div>
+	</ion-content>
+
+</ion-view>
